@@ -3,155 +3,208 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🥗 두부텐더 샐러드 공식 반박문</title>
+  <title>🥗 두부텐더 샐러드 대반격</title>
   <style>
     :root {
-      --bg: #effdf4;
-      --card: rgba(255, 255, 255, 0.88);
-      --text: #102014;
-      --muted: #607060;
-      --green: #22c55e;
-      --green-dark: #15803d;
-      --green-deep: #14532d;
-      --lime: #bef264;
-      --red: #dc2626;
-      --yellow: #facc15;
-      --shadow: 0 18px 50px rgba(16, 32, 20, 0.10);
+      --bg: #fffdf3;
+      --ink: #1b1120;
+      --mint: #2ad36e;
+      --mint-deep: #0f7c3d;
+      --pink: #ff4fb8;
+      --pink-deep: #d61d85;
+      --yellow: #ffe45e;
+      --orange: #ff914d;
+      --sky: #7be7ff;
+      --paper: rgba(255, 255, 255, 0.82);
+      --shadow: 0 18px 45px rgba(43, 24, 47, 0.14);
+      --line: rgba(27, 17, 32, 0.08);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Apple SD Gothic Neo, Malgun Gothic, sans-serif;
-      color: var(--text);
+      font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      color: var(--ink);
+      line-height: 1.65;
       background:
-        radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 30%),
-        radial-gradient(circle at top right, rgba(250, 204, 21, 0.12), transparent 24%),
-        linear-gradient(180deg, #f8fff9 0%, var(--bg) 100%);
-      line-height: 1.7;
+        radial-gradient(circle at 10% 10%, rgba(255, 79, 184, 0.18), transparent 24%),
+        radial-gradient(circle at 90% 10%, rgba(123, 231, 255, 0.22), transparent 24%),
+        radial-gradient(circle at 30% 70%, rgba(42, 211, 110, 0.20), transparent 28%),
+        linear-gradient(180deg, #fffef8 0%, var(--bg) 100%);
       overflow-x: hidden;
     }
 
-    body.fact-mode {
-      --bg: #f3fff7;
-      --green: #16a34a;
-      --lime: #86efac;
-      filter: saturate(1.08);
+    body.party-mode {
+      filter: saturate(1.15) contrast(1.03);
+      background:
+        radial-gradient(circle at 15% 18%, rgba(255, 79, 184, 0.25), transparent 26%),
+        radial-gradient(circle at 88% 8%, rgba(123, 231, 255, 0.30), transparent 24%),
+        radial-gradient(circle at 22% 76%, rgba(42, 211, 110, 0.25), transparent 30%),
+        linear-gradient(180deg, #fffdf6 0%, #f7fff8 100%);
     }
 
-    a { color: inherit; }
+    .bg-grid,
+    .bg-dots {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+    }
+    .bg-grid {
+      opacity: 0.30;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.4));
+    }
+    .bg-dots {
+      opacity: 0.45;
+      background-image: radial-gradient(rgba(255, 79, 184, 0.18) 1px, transparent 1px);
+      background-size: 28px 28px;
+      transform: rotate(-4deg) scale(1.08);
+    }
 
     .progress {
       position: fixed;
       inset: 0 auto auto 0;
       width: 100%;
-      height: 5px;
-      background: rgba(16, 32, 20, 0.08);
-      z-index: 50;
+      height: 6px;
+      background: rgba(27, 17, 32, 0.08);
+      z-index: 100;
     }
     .progress span {
       display: block;
-      height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--green), var(--yellow));
-      transition: width 0.08s linear;
+      height: 100%;
+      background: linear-gradient(90deg, var(--pink), var(--yellow), var(--mint), var(--sky));
+      box-shadow: 0 0 24px rgba(255, 79, 184, 0.45);
     }
 
-    .ticker {
-      background: linear-gradient(90deg, var(--red), #f97316);
-      color: white;
-      font-weight: 800;
+    .marquee {
+      position: sticky;
+      top: 6px;
+      z-index: 40;
       overflow: hidden;
+      background: linear-gradient(90deg, var(--pink), var(--orange));
+      color: white;
+      border-bottom: 3px solid rgba(255,255,255,0.45);
+      box-shadow: 0 12px 30px rgba(255, 79, 184, 0.20);
+    }
+    .marquee-track {
+      display: inline-flex;
       white-space: nowrap;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
+      animation: marquee 16s linear infinite;
+      font-weight: 900;
+      padding: 11px 0;
+      letter-spacing: 0.02em;
     }
-    .ticker p {
-      margin: 0;
-      padding: 12px 0;
-      display: inline-block;
-      animation: ticker 18s linear infinite;
+    .marquee-track span { padding-right: 34px; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
-    @keyframes ticker {
-      from { transform: translateX(100vw); }
-      to { transform: translateX(-100%); }
+
+    .shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
     }
 
     .hero {
       position: relative;
-      padding: 96px 20px 54px;
-      overflow: hidden;
+      padding: 58px 0 34px;
     }
-    .hero::before,
-    .hero::after {
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .glass,
+    .judge-panel,
+    .card,
+    .table-wrap,
+    .quote-box,
+    .evidence,
+    .footer-card {
+      background: var(--paper);
+      backdrop-filter: blur(14px);
+      border: 2px solid rgba(255,255,255,0.75);
+      box-shadow: var(--shadow);
+    }
+
+    .glass {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 34px 30px 30px;
+    }
+    .glass::before {
       content: "";
       position: absolute;
-      width: 380px;
-      height: 380px;
+      inset: -30% auto auto -15%;
+      width: 240px;
+      height: 240px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(34,197,94,0.20), transparent 65%);
-      filter: blur(8px);
-      animation: float 12s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(255,255,255,0.85), transparent 70%);
+      opacity: 0.55;
       pointer-events: none;
     }
-    .hero::before { top: -120px; left: -120px; }
-    .hero::after { bottom: -160px; right: -120px; animation-delay: -6s; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0) scale(1); }
-      50% { transform: translateY(18px) translateX(10px) scale(1.06); }
-    }
 
-    .shell {
-      position: relative;
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 20px 40px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 26px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(20, 83, 45, 0.08);
-      color: var(--green-deep);
-      font-weight: 800;
-      letter-spacing: 0.02em;
+    .eyebrow-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-bottom: 18px;
     }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 22px rgba(27, 17, 32, 0.10);
+    }
+    .badge.pink { background: #ffe1f3; color: var(--pink-deep); }
+    .badge.green { background: #defae9; color: var(--mint-deep); }
+    .badge.yellow { background: #fff4be; color: #916100; }
 
     h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
+      margin: 0;
+      font-size: clamp(2.9rem, 7vw, 5.9rem);
+      line-height: 0.96;
+      letter-spacing: -0.055em;
     }
-    h1 .strike {
+    .strike {
+      display: inline-block;
       text-decoration: line-through;
-      text-decoration-thickness: 10px;
-      text-decoration-color: rgba(220, 38, 38, 0.25);
-      color: rgba(16, 32, 20, 0.35);
-      display: inline-block;
+      text-decoration-thickness: 12px;
+      text-decoration-color: rgba(214, 29, 133, 0.30);
+      color: rgba(27, 17, 32, 0.38);
+      transform: rotate(-2deg);
     }
-    h1 .accent {
+    .pop {
       display: inline-block;
-      color: var(--green-deep);
-      text-shadow: 0 8px 28px rgba(22, 163, 74, 0.15);
+      color: var(--mint-deep);
+      text-shadow:
+        0 2px 0 #fff,
+        0 10px 30px rgba(42, 211, 110, 0.18);
     }
 
-    .hero p {
-      margin: 0 0 28px;
+    .hero-copy {
+      margin: 18px 0 24px;
       font-size: 1.1rem;
-      color: #284133;
       max-width: 640px;
+      color: #3f3743;
+    }
+    .hero-copy strong {
+      background: linear-gradient(transparent 55%, rgba(255, 228, 94, 0.7) 55%);
     }
 
     .cta-row {
@@ -161,377 +214,603 @@
       align-items: center;
     }
     .btn {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
+      appearance: none;
       border: 0;
-      border-radius: 999px;
-      padding: 14px 18px;
-      font-weight: 800;
+      text-decoration: none;
       cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      border-radius: 999px;
+      padding: 15px 20px;
+      font-weight: 900;
+      font-size: 0.98rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+      box-shadow: 0 16px 28px rgba(27, 17, 32, 0.12);
     }
-    .btn:hover { transform: translateY(-2px) scale(1.01); }
-    .btn.primary {
-      background: linear-gradient(135deg, var(--green-dark), var(--green));
+    .btn:hover { transform: translateY(-3px) rotate(-1deg); filter: saturate(1.05); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--mint), #7df0a5);
+      color: var(--ink);
+    }
+    .btn-secondary {
+      background: linear-gradient(135deg, #fff, #ffe3f2);
+      color: var(--pink-deep);
+    }
+    .btn-party {
+      background: linear-gradient(135deg, var(--pink), var(--orange));
       color: white;
     }
-    .btn.secondary {
-      background: rgba(255,255,255,0.85);
-      color: var(--green-deep);
-      border: 1px solid rgba(20, 83, 45, 0.12);
+
+    .sticker {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 15px;
+      border-radius: 18px;
+      font-weight: 900;
+      box-shadow: 0 14px 25px rgba(27, 17, 32, 0.12);
+      border: 2px solid rgba(255,255,255,0.85);
+    }
+    .sticker.one {
+      top: 20px;
+      right: 26px;
+      background: #fff4be;
+      color: #7a5100;
+      transform: rotate(8deg);
+      animation: wobble 2.3s ease-in-out infinite;
+    }
+    .sticker.two {
+      bottom: 20px;
+      right: 34px;
+      background: #dffcf1;
+      color: var(--mint-deep);
+      transform: rotate(-8deg);
+      animation: wobble 2.6s ease-in-out infinite reverse;
+    }
+    @keyframes wobble {
+      0%, 100% { transform: rotate(8deg) translateY(0); }
+      50% { transform: rotate(5deg) translateY(-4px); }
     }
 
-    .hero-card {
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(20, 83, 45, 0.12);
-      border-radius: 28px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      transform-style: preserve-3d;
+    .judge-panel {
+      position: relative;
+      border-radius: 34px;
+      padding: 26px;
+      overflow: hidden;
     }
-    .hero-card .score {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-    .stat {
-      background: rgba(255,255,255,0.92);
-      border-radius: 20px;
-      padding: 16px;
-      text-align: center;
-      box-shadow: inset 0 0 0 1px rgba(20,83,45,0.08);
-    }
-    .stat .num {
-      display: block;
-      font-size: 2rem;
+    .judge-panel::before {
+      content: "VERDICT";
+      position: absolute;
+      top: 14px;
+      right: -14px;
+      font-size: 4.2rem;
       font-weight: 900;
-      color: var(--green-deep);
+      letter-spacing: -0.05em;
+      color: rgba(255, 79, 184, 0.08);
+      transform: rotate(-8deg);
+      pointer-events: none;
     }
-    .stat .label {
-      color: var(--muted);
+    .judge-panel h2 {
+      margin: 0 0 16px;
+      font-size: 1.4rem;
+      letter-spacing: -0.03em;
+    }
+    .meter {
+      position: relative;
+      height: 18px;
+      background: rgba(27, 17, 32, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 10px 0 8px;
+    }
+    .meter span {
+      display: block;
+      height: 100%;
+      width: 86%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--yellow), var(--orange), var(--pink));
+      transition: width 0.35s ease;
+    }
+    .meter-row {
+      display: flex;
+      justify-content: space-between;
       font-size: 0.88rem;
-      font-weight: 700;
+      font-weight: 800;
+      color: #5b5160;
+    }
+    .judge-card {
+      margin-top: 18px;
+      display: grid;
+      gap: 12px;
+    }
+    .judge-mini {
+      padding: 16px 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+    }
+    .judge-mini strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1.08rem;
+    }
+    .count-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .count-box {
+      text-align: center;
+      border-radius: 18px;
+      padding: 14px 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.68));
+      border: 1px solid var(--line);
+    }
+    .count-box b {
+      display: block;
+      font-size: 1.75rem;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .count-box span {
+      font-size: 0.82rem;
+      color: #605769;
+      font-weight: 800;
     }
 
     section {
-      padding: 56px 0;
+      padding: 30px 0;
     }
-
-    .section-title {
+    .section-head {
       display: flex;
-      justify-content: space-between;
       align-items: end;
-      gap: 16px;
-      margin-bottom: 22px;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
     }
-    .section-title h2 {
+    .section-head h2 {
       margin: 0;
-      font-size: clamp(1.6rem, 3vw, 2.3rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(1.8rem, 4vw, 2.9rem);
+      letter-spacing: -0.05em;
     }
-    .section-title p {
+    .section-head p {
       margin: 0;
-      color: var(--muted);
+      color: #61596a;
+      font-weight: 700;
       max-width: 420px;
       text-align: right;
     }
 
-    .links {
+    .evidence {
+      border-radius: 28px;
+      padding: 18px;
+      margin-top: 10px;
+    }
+    .evidence-grid {
       display: grid;
-      gap: 14px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 18px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
-    .link-card {
+    .evidence a {
       display: block;
-      padding: 16px 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.78);
-      border: 1px solid rgba(20,83,45,0.08);
       text-decoration: none;
-      box-shadow: 0 10px 26px rgba(16, 32, 20, 0.06);
-      transition: transform 0.18s ease, border-color 0.18s ease;
+      color: inherit;
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--line);
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
     }
-    .link-card:hover { transform: translateY(-2px); border-color: rgba(20,83,45,0.28); }
-    .link-card span {
+    .evidence a:hover {
+      transform: translateY(-3px) rotate(-1deg);
+      box-shadow: 0 16px 28px rgba(27, 17, 32, 0.10);
+    }
+    .evidence span {
       display: block;
-      color: var(--muted);
-      font-size: 0.88rem;
       margin-bottom: 4px;
+      color: #655d6d;
+      font-size: 0.86rem;
+      font-weight: 800;
     }
-    .link-card strong { font-size: 1rem; }
+    .evidence strong {
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
 
-    .cards {
+    .card-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
     .card {
       position: relative;
-      background: var(--card);
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(20,83,45,0.08);
+      border-radius: 30px;
+      padding: 24px 22px 22px;
       overflow: hidden;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 22px 58px rgba(16, 32, 20, 0.14);
+      transform: translateY(-5px) rotate(-1deg);
+      box-shadow: 0 22px 50px rgba(27, 17, 32, 0.16);
     }
     .card::after {
       content: "";
       position: absolute;
-      inset: auto -20% -35% auto;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(34,197,94,0.18), transparent 70%);
+      right: -34px;
+      bottom: -42px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.68), transparent 70%);
       pointer-events: none;
     }
-    .card .tag {
+    .card.kick { background: linear-gradient(135deg, rgba(223,252,241,0.95), rgba(255,255,255,0.86)); }
+    .card.popcorn { background: linear-gradient(135deg, rgba(255,244,190,0.94), rgba(255,255,255,0.88)); }
+    .card.ice { background: linear-gradient(135deg, rgba(225,248,255,0.96), rgba(255,255,255,0.86)); }
+    .card.pink { background: linear-gradient(135deg, rgba(255,225,243,0.95), rgba(255,255,255,0.86)); }
+    .chip {
       display: inline-flex;
-      gap: 8px;
       align-items: center;
-      padding: 6px 12px;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 7px 12px;
       border-radius: 999px;
-      background: rgba(34,197,94,0.10);
-      color: var(--green-deep);
       font-size: 0.82rem;
-      font-weight: 800;
-      margin-bottom: 14px;
+      font-weight: 900;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(27,17,32,0.08);
     }
     .card h3 {
       margin: 0 0 10px;
-      font-size: 1.22rem;
-      line-height: 1.35;
+      font-size: 1.38rem;
+      line-height: 1.28;
+      letter-spacing: -0.04em;
     }
-    .card p { margin: 0; color: #334155; }
-    .card .verdict {
+    .card p {
+      margin: 0;
+      color: #403846;
+      font-size: 1rem;
+    }
+    .verdict {
       display: inline-flex;
       margin-top: 16px;
-      padding: 6px 12px;
+      padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(34,197,94,0.12);
-      color: var(--green-deep);
-      font-size: 0.84rem;
+      background: rgba(27,17,32,0.06);
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+    .line-mark {
+      background: linear-gradient(transparent 55%, rgba(255, 228, 94, 0.72) 55%);
       font-weight: 900;
     }
 
-    .callout {
-      margin-top: 22px;
-      padding: 20px 22px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(250,204,21,0.18), rgba(34,197,94,0.12));
-      border: 1px dashed rgba(20,83,45,0.18);
+    .shout {
+      margin-top: 18px;
+      border-radius: 30px;
+      padding: 22px;
+      background: linear-gradient(135deg, rgba(255,79,184,0.18), rgba(255,228,94,0.22), rgba(42,211,110,0.15));
+      box-shadow: var(--shadow);
+      border: 2px dashed rgba(27,17,32,0.12);
       text-align: center;
     }
-    .callout strong {
+    .shout strong {
       display: block;
-      font-size: 1.35rem;
-      margin-bottom: 6px;
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      letter-spacing: -0.05em;
+      margin-bottom: 8px;
     }
 
     .table-wrap {
-      background: rgba(255,255,255,0.85);
-      border-radius: 24px;
+      border-radius: 28px;
       overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(20,83,45,0.08);
     }
     table {
       width: 100%;
       border-collapse: collapse;
     }
     thead {
-      background: linear-gradient(90deg, var(--green-dark), var(--green));
+      background: linear-gradient(90deg, var(--pink), var(--orange), var(--yellow));
       color: white;
     }
     th, td {
-      padding: 14px 16px;
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--line);
       text-align: center;
-      border-bottom: 1px solid rgba(20,83,45,0.08);
     }
-    th:first-child, td:first-child { text-align: left; font-weight: 800; }
-    tbody tr:nth-child(even) { background: rgba(34,197,94,0.035); }
-    .win { color: var(--green-deep); font-weight: 900; }
-    .lose { color: var(--red); }
+    th:first-child, td:first-child {
+      text-align: left;
+      font-weight: 900;
+    }
+    tbody tr:nth-child(even) {
+      background: rgba(255, 79, 184, 0.03);
+    }
+    .win { color: var(--mint-deep); font-weight: 900; }
+    .lose { color: var(--pink-deep); font-weight: 800; }
 
-    blockquote {
-      margin: 20px 0 0;
-      padding: 22px 22px 22px 26px;
-      border-radius: 0 18px 18px 0;
-      background: rgba(255,255,255,0.8);
-      border-left: 6px solid var(--green);
-      box-shadow: var(--shadow);
-      color: #274032;
+    .quote-box {
+      margin-top: 16px;
+      border-radius: 28px;
+      padding: 22px 24px;
+      position: relative;
     }
-    blockquote cite {
+    .quote-box::before {
+      content: "“";
+      position: absolute;
+      top: -14px;
+      left: 16px;
+      font-size: 4rem;
+      color: rgba(255, 79, 184, 0.20);
+      font-weight: 900;
+    }
+    .quote-box p {
+      margin: 0;
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+    }
+    .quote-box cite {
       display: block;
       margin-top: 10px;
-      color: var(--muted);
       font-style: normal;
-      font-size: 0.9rem;
+      font-weight: 800;
+      color: #675f70;
     }
 
-    .facts {
+    .mini-stage {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 0.92fr 1.08fr;
       gap: 18px;
+      margin-top: 18px;
     }
-    .fact-list, .mini-panel {
-      background: rgba(255,255,255,0.85);
-      border-radius: 24px;
-      padding: 22px;
+    .battle-box,
+    .one-liner-box {
+      border-radius: 30px;
+      padding: 24px 22px;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(20,83,45,0.08);
     }
-    .fact-list ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 12px;
+    .battle-box {
+      background: linear-gradient(135deg, rgba(255,225,243,0.94), rgba(255,255,255,0.86));
     }
-    .fact-list li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      color: #334155;
+    .one-liner-box {
+      background: linear-gradient(135deg, rgba(223,252,241,0.95), rgba(255,255,255,0.86));
     }
-    .fact-list .icon { font-size: 1.2rem; line-height: 1.2; }
-
-    .mini-panel {
-      position: relative;
-      overflow: hidden;
+    .battle-box h3,
+    .one-liner-box h3 {
+      margin: 0 0 10px;
+      font-size: 1.45rem;
+      letter-spacing: -0.04em;
     }
-    .mini-panel .burst {
-      position: absolute;
-      inset: auto -20px -20px auto;
-      font-size: 6rem;
-      opacity: 0.08;
-      pointer-events: none;
-    }
-    .toggle-row {
+    .battle-choice {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 16px;
     }
-    .pill {
+    .choice {
       border: 0;
       border-radius: 999px;
-      padding: 10px 14px;
+      padding: 11px 14px;
       cursor: pointer;
+      font-weight: 900;
+      background: rgba(255,255,255,0.82);
+      color: var(--ink);
+      box-shadow: 0 12px 20px rgba(27, 17, 32, 0.08);
+    }
+    .choice:hover { transform: translateY(-2px); }
+    .result-box {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      min-height: 90px;
       font-weight: 800;
-      background: rgba(34,197,94,0.12);
-      color: var(--green-deep);
+      color: #443b48;
+    }
+    .one-liner-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .liner {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--line);
+      font-weight: 900;
+      letter-spacing: -0.02em;
     }
 
     .final {
-      margin-top: 10px;
-      padding: 76px 20px 84px;
-      background: linear-gradient(135deg, var(--green-deep), #0f5132);
-      color: white;
+      padding: 44px 0 64px;
+    }
+    .footer-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 34px 28px;
       text-align: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 228, 94, 0.28), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(255, 79, 184, 0.18), transparent 26%),
+        radial-gradient(circle at 50% 85%, rgba(42, 211, 110, 0.20), transparent 24%),
+        rgba(255,255,255,0.84);
     }
-    .final h2 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 5vw, 3.1rem);
+    .footer-card h2 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      letter-spacing: -0.05em;
     }
-    .final p {
-      margin: 0 auto 26px;
-      max-width: 560px;
-      opacity: 0.9;
+    .footer-card p {
+      margin: 0 auto 20px;
+      max-width: 620px;
+      color: #504857;
+      font-size: 1.05rem;
     }
-    .final .btn.secondary {
-      background: white;
-      color: var(--green-deep);
+    .stamp {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 10px 16px;
+      border: 4px solid var(--pink);
+      color: var(--pink-deep);
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 900;
+      transform: rotate(-7deg);
+      background: rgba(255,255,255,0.72);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: rotate(-7deg) scale(1); }
+      50% { transform: rotate(-7deg) scale(1.05); }
+    }
+
+    .emoji-rain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 15;
+    }
+    .emoji {
+      position: absolute;
+      top: -60px;
+      font-size: 28px;
+      animation: drop linear forwards;
+      opacity: 0.92;
+      filter: drop-shadow(0 8px 10px rgba(27, 17, 32, 0.12));
+    }
+    @keyframes drop {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.12;
+      }
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(16px);
+      transform: translateY(18px) scale(0.98);
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
     .reveal.show {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
     footer {
       text-align: center;
-      padding: 22px 16px 30px;
-      color: var(--muted);
+      padding: 0 0 24px;
+      color: #6b6271;
       font-size: 0.86rem;
+      font-weight: 700;
     }
 
-    @media (max-width: 880px) {
-      .hero-grid, .cards, .facts, .links { grid-template-columns: 1fr; }
-      .section-title { align-items: start; flex-direction: column; }
-      .section-title p { text-align: left; }
+    @media (max-width: 920px) {
+      .hero-inner,
+      .card-grid,
+      .evidence-grid,
+      .mini-stage {
+        grid-template-columns: 1fr;
+      }
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+      .section-head p {
+        text-align: left;
+      }
+      .sticker.one,
+      .sticker.two {
+        position: static;
+        display: inline-flex;
+        margin-top: 10px;
+      }
+      .count-wrap {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   </style>
 </head>
 <body>
+  <div class="bg-grid"></div>
+  <div class="bg-dots"></div>
   <div class="progress"><span id="progressBar"></span></div>
-  <div class="ticker"><p>🚨 긴급 팩트체크 | 원문 링크 포함 | 차가워도 위로는 된다 | 두부텐더 샐러드, 오늘의 정답 | 🥗🥗🥗</p></div>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>🚨 긴급 속보: 들기름 메밀국수 측 주장, 오늘도 고소함에만 의존 🚨</span>
+      <span>🥗 두부텐더 샐러드 측 입장: 웃기고도 논리적인 반박 제출 완료 🥗</span>
+      <span>📎 원문 링크 열람 가능 · 기름보다 단백질이 말이 많음 · 오늘의 판결은 이미 나옴 📎</span>
+      <span>🚨 긴급 속보: 들기름 메밀국수 측 주장, 오늘도 고소함에만 의존 🚨</span>
+      <span>🥗 두부텐더 샐러드 측 입장: 웃기고도 논리적인 반박 제출 완료 🥗</span>
+      <span>📎 원문 링크 열람 가능 · 기름보다 단백질이 말이 많음 · 오늘의 판결은 이미 나옴 📎</span>
+    </div>
+  </div>
+
+  <div class="emoji-rain" id="emojiRain" aria-hidden="true"></div>
 
   <header class="hero">
-    <div class="shell hero-grid">
-      <div class="reveal">
-        <div class="eyebrow">⚠️ 공식 반박문 · 반박 강도 MAX</div>
-        <h1>
-          <span class="strike">들기름 메밀국수</span>보다<br />
-          <span class="accent">두부텐더 샐러드</span>가<br />
-          더 그럴듯합니다.
-        </h1>
-        <p>
-          원문 페이지의 논리를 하나씩 뜯어보면, 샐러드가 진짜로 약한 게 아니라
-          주장 쪽이 너무 급합니다. 그래서 이번엔 더 재밌고, 더 날카롭게, 그리고 더 예쁘게 반박합니다.
-        </p>
-        <div class="cta-row">
-          <a class="btn primary" href="#rebuttal">반박 본문 보기 →</a>
-          <a class="btn secondary" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">원문 페이지 열기 ↗</a>
+    <div class="shell hero-inner">
+      <section class="glass reveal">
+        <div class="eyebrow-row">
+          <div class="badge pink">💥 반박 강도 상향</div>
+          <div class="badge green">🥗 샐러드 측 최종 입장</div>
+          <div class="badge yellow">🧾 원문 검토 완료</div>
         </div>
-        <div class="links" aria-label="바로가기 링크">
-          <a class="link-card" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">
-            <span>근거 링크</span>
-            <strong>원문 주장 확인하기</strong>
-          </a>
-          <a class="link-card" href="#comparison">
-            <span>비교표</span>
-            <strong>실전 판정표 보기</strong>
-          </a>
-          <a class="link-card" href="#final">
-            <span>결론</span>
-            <strong>최종 한 줄 요약</strong>
-          </a>
-        </div>
-      </div>
 
-      <aside class="hero-card reveal" data-tilt>
-        <div class="score">
-          <div class="stat">
-            <span class="num" data-count="4">0</span>
-            <span class="label">반박 포인트</span>
+        <h1>
+          <span class="strike">들기름 메밀국수</span><br />
+          말이 많을수록<br />
+          <span class="pop">두부텐더 샐러드</span>가 웃습니다.
+        </h1>
+
+        <p class="hero-copy">
+          원문은 고소함을 근거처럼 말하지만, 사실은 <strong>기름이 열심히 일한 것</strong>에 가깝습니다.
+          반면 두부텐더 샐러드는 바삭함, 단백질, 비주얼, 오후 생존력까지 챙깁니다.
+          결론은 간단합니다. <strong>오늘 점심 토론, 샐러드 측이 더 웃기고 더 설득력 있습니다.</strong>
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#rebuttal">반박문 읽으러 가기 →</a>
+          <a class="btn btn-secondary" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">원문 보기 ↗</a>
+          <button class="btn btn-party" id="partyButton" type="button">촌스럽지만 힙하게 더 보기 ✨</button>
+        </div>
+
+        <div class="sticker one">⚠️ 과장 검출됨</div>
+        <div class="sticker two">🥗 오늘의 유력 후보</div>
+      </section>
+
+      <aside class="judge-panel reveal">
+        <h2>오늘의 판정 위원회</h2>
+        <div class="meter"><span id="truthMeter"></span></div>
+        <div class="meter-row">
+          <span>근거 부족</span>
+          <span>말맛 과다</span>
+        </div>
+
+        <div class="judge-card">
+          <div class="judge-mini">
+            <strong>판결 요약</strong>
+            들기름 메밀국수는 고소하지만, 고소하다고 다 이기는 건 아닙니다.
           </div>
-          <div class="stat">
-            <span class="num" data-count="1">0</span>
-            <span class="label">원문 링크</span>
+          <div class="judge-mini">
+            <strong>핵심 멘트</strong>
+            <span class="line-mark">위로는 온도가 아니라 만족도에서 온다.</span>
           </div>
-          <div class="stat">
-            <span class="num" data-count="99">0</span>
-            <span class="label">과장지수</span>
+        </div>
+
+        <div class="count-wrap">
+          <div class="count-box">
+            <b data-count="4">0</b>
+            <span>반박 포인트</span>
           </div>
-          <div class="stat">
-            <span class="num" data-count="100">0</span>
-            <span class="label">웃음지수</span>
+          <div class="count-box">
+            <b data-count="87">0</b>
+            <span>드립 체감치</span>
+          </div>
+          <div class="count-box">
+            <b data-count="100">0</b>
+            <span>샐러드 지지율</span>
           </div>
         </div>
       </aside>
@@ -539,72 +818,98 @@
   </header>
 
   <main class="shell">
-    <section id="rebuttal">
-      <div class="section-title reveal">
-        <h2>4가지 주장, 4가지 반박</h2>
-        <p>논리 오류는 줄이고, 드립과 링크는 늘렸습니다.</p>
+    <section class="reveal">
+      <div class="section-head">
+        <h2>증거 자료</h2>
+        <p>말만 세게 하는 페이지가 아니라, 원문 링크까지 걸어둔 페이지입니다.</p>
       </div>
 
-      <div class="cards">
-        <article class="card reveal">
-          <div class="tag">🍳 논점 수정</div>
-          <h3>기름 부어서 맛있으면 튀김도 건강식임? → 자기 단점 강조는 하지 말자</h3>
-          <p>
-            이 문장은 너무 세게 나가서, 오히려 <strong>두부텐더가 튀김이라는 사실만 크게 보이게</strong> 합니다.
-            그래서 아예 이렇게 바꾸는 게 낫습니다:
-            <br /><strong>“튀김이라도, 두부텐더는 단백질과 식감이 남습니다.”</strong>
-            <br />즉, 약점을 공격하는 게 아니라 장점을 설득하는 방향으로 가야 합니다.
-          </p>
-          <span class="verdict">✅ 더 똑똑한 반박</span>
-        </article>
-
-        <article class="card reveal">
-          <div class="tag">🌡️ 논리 보정</div>
-          <h3>“차가워서 위로가 안 된다”는 주장부터가 너무 좁습니다</h3>
-          <p>
-            원문이 샐러드를 차갑다고 놀리지만, 들기름 메밀국수도 차갑게 먹는 경우가 많습니다.
-            그러면 핵심은 온도가 아니라 <strong>먹고 나서 마음이 납득하느냐</strong>가 됩니다.
-            그래서 캐치프레이즈는 이쪽이 더 좋습니다:
-            <br /><strong>“위로는 온도가 아니라 만족도에서 온다.”</strong>
-          </p>
-          <span class="verdict">✅ 더 정확한 한 줄</span>
-        </article>
-
-        <article class="card reveal">
-          <div class="tag">📣 링크형 반박</div>
-          <h3>상대 페이지를 직접 보여주고, 그 위에 반박을 얹자</h3>
-          <p>
-            지금처럼 원문을 <a href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">직접 링크</a>로 걸어두면
-            패러디가 아니라 <strong>공개 토론</strong>처럼 보입니다.
-            “저 링크를 봐도 샐러드가 더 낫다”는 구조가 생기면, 장난감 같은 페이지가 아니라
-            진짜 반박 콘텐츠가 됩니다.
-          </p>
-          <span class="verdict">✅ 근거까지 같이 제시</span>
-        </article>
-
-        <article class="card reveal">
-          <div class="tag">🧊 최종 문구</div>
-          <h3>“아이스크림도 위로가 안 됩니까?” 대신 이쪽이 더 세다</h3>
-          <p>
-            이건 너무 억지로 웃기려는 느낌이 있어서, 살짝 더 정교하게 바꾸겠습니다.
-            <br /><strong>“차가워도 위로는 됩니다. 중요한 건 온도가 아니라 한 입 뒤의 표정이죠.”</strong>
-            <br />이렇게 가면 반박도 되고, 말맛도 살아납니다.
-          </p>
-          <span class="verdict">✅ 캐치프레이즈 교체 완료</span>
-        </article>
-      </div>
-
-      <div class="callout reveal">
-        <strong>최종 스코어: 샐러드 4 - 0 메밀국수</strong>
-        <span>이제는 기름이 아니라 논리로 승부합시다.</span>
+      <div class="evidence">
+        <div class="evidence-grid">
+          <a href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">
+            <span>원문 링크</span>
+            <strong>상대 측 주장 직접 보기</strong>
+          </a>
+          <a href="#rebuttal">
+            <span>핵심 반박</span>
+            <strong>웃기면서도 논리 챙긴 문장 보기</strong>
+          </a>
+          <a href="#decision">
+            <span>최종 판정</span>
+            <strong>오늘 점심의 사실상 결론 보기</strong>
+          </a>
+        </div>
       </div>
     </section>
 
-    <section id="comparison">
-      <div class="section-title reveal">
-        <h2>정면 승부</h2>
-        <p>연출은 화려하게, 판정은 냉정하게.</p>
+    <section id="rebuttal">
+      <div class="section-head reveal">
+        <h2>주장 4개, 반박 4개</h2>
+        <p>이번엔 약점 자폭 없이, 상대 논리만 정확히 찌릅니다.</p>
       </div>
+
+      <div class="card-grid">
+        <article class="card kick reveal">
+          <div class="chip">🍳 약점 자폭 금지</div>
+          <h3>“기름 부어서 맛있으면 튀김도 건강식임?”은 우리 편을 같이 때리는 문장입니다</h3>
+          <p>
+            두부텐더가 튀김이라는 사실을 우리가 먼저 대문짝만 하게 외칠 필요는 없습니다.
+            더 나은 라인은 이겁니다.
+            <span class="line-mark">“들기름은 향을 얹지만, 두부텐더는 식감과 단백질을 같이 얹습니다.”</span>
+            이건 상대를 놀리면서도 우리 메뉴의 장점을 남깁니다.
+          </p>
+          <div class="verdict">✅ 반박은 공격적으로, 자해는 없이</div>
+        </article>
+
+        <article class="card ice reveal">
+          <div class="chip">🧊 논리 오류 압수</div>
+          <h3>샐러드가 차가워서 위로가 안 된다? 들기름 메밀국수도 차갑게 먹는 편 아닙니까</h3>
+          <p>
+            여기서 중요한 건 온도계가 아니라 먹고 난 뒤의 표정입니다.
+            그래서 이번 문장은 이렇게 정리합니다.
+            <span class="line-mark">“차가워도 위로는 됩니다. 중요한 건 온도가 아니라 한 입 뒤의 납득입니다.”</span>
+            듣자마자 고개 끄덕여지는 쪽이 이긴 겁니다.
+          </p>
+          <div class="verdict">✅ 아이스크림 비유보다 더 정교함</div>
+        </article>
+
+        <article class="card popcorn reveal">
+          <div class="chip">🛢️ 과장 잡기</div>
+          <h3>원문은 “고소함”을 근거처럼 말하지만, 고소함은 사실 기름이 열일한 결과입니다</h3>
+          <p>
+            들기름 메밀국수의 장점이 없다는 뜻은 아닙니다.
+            다만 모든 장점을 “오메가-3”와 “위로”로 포장하면 순간적으로
+            <span class="line-mark">건강식 발표회에 나온 광고 카피</span>처럼 들립니다.
+            샐러드는 적어도 바삭함, 색감, 단백질이라는 실물이 있습니다.
+          </p>
+          <div class="verdict">✅ 기름은 기름대로, 샐러드는 샐러드대로 평가합시다</div>
+        </article>
+
+        <article class="card pink reveal">
+          <div class="chip">📣 최종 캐치프레이즈</div>
+          <h3>오늘의 제일 센 문장: 위로는 온도가 아니라 만족도에서 온다</h3>
+          <p>
+            이 문장이 좋은 이유는 억지 비유가 없고, 상대 주장도 한 번에 무력화하기 때문입니다.
+            거기다 샐러드 쪽 이미지를 세련되게 올려줍니다.
+            <span class="line-mark">차갑다고 허전한 게 아니라, 허전한 메뉴가 허전한 겁니다.</span>
+            두부텐더가 들어가면 이야기가 달라집니다.
+          </p>
+          <div class="verdict">✅ 웃기고, 세고, 기억에도 남음</div>
+        </article>
+      </div>
+
+      <div class="shout reveal">
+        <strong>최종 스코어: 샐러드 4 - 0 메밀국수</strong>
+        반박문 작성자 의견이 아니라, 오늘 페이지의 전체 분위기가 이미 그렇게 말하고 있습니다.
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head reveal">
+        <h2>정면 승부 표</h2>
+        <p>오늘의 판정은 감정이 아니라 매우 객관적인 척하는 표로 진행됩니다.</p>
+      </div>
+
       <div class="table-wrap reveal">
         <table>
           <thead>
@@ -616,98 +921,133 @@
           </thead>
           <tbody>
             <tr>
-              <td>오후 생존율</td>
-              <td class="win">눈 뜨고 회의 참여</td>
-              <td class="lose">졸음과 함께 회의 입장</td>
+              <td>첫인상</td>
+              <td class="win">색감부터 일단 이김</td>
+              <td class="lose">갈색의 진심</td>
             </tr>
             <tr>
-              <td>논리의 힘</td>
-              <td class="win">단백질 + 링크 + 반박</td>
-              <td class="lose">고소함 + 추측 + 과장</td>
+              <td>오후 생존력</td>
+              <td class="win">회의에서 영혼 유지</td>
+              <td class="lose">고소하게 졸림</td>
             </tr>
             <tr>
-              <td>먹고 난 기분</td>
-              <td class="win">가볍고 든든함</td>
-              <td class="lose">나른하고 고소함</td>
+              <td>주장 방식</td>
+              <td class="win">단백질과 식감으로 설득</td>
+              <td class="lose">기름이 다 했다</td>
             </tr>
             <tr>
-              <td>비주얼</td>
-              <td class="win">색감이 살아남</td>
-              <td class="lose">갈색 우주</td>
+              <td>위로 논리</td>
+              <td class="win">차가워도 납득되면 위로</td>
+              <td class="lose">온도로 감정 재단</td>
             </tr>
             <tr>
-              <td>최종 코멘트</td>
-              <td class="win">오늘의 현명한 선택</td>
-              <td class="lose">기름을 기름으로 설득</td>
+              <td>종합 코멘트</td>
+              <td class="win">오늘의 유죄 없는 승자</td>
+              <td class="lose">억울하면 링크 열어보세요</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <blockquote class="reveal">
-        “차가워서 위로가 안 되는 게 아니라, 위로의 조건을 온도 하나로 줄여버리는 게 문제다.”
-        <cite>— 두부텐더 샐러드 옹호위원회</cite>
-      </blockquote>
+
+      <div class="quote-box reveal">
+        <p>차가운 음식이 위로가 안 되는 게 아니라, 만족이 없는 음식이 위로가 안 되는 겁니다.</p>
+        <cite>— 두부텐더 샐러드 측 변호인단</cite>
+      </div>
     </section>
 
-    <section id="bonus">
-      <div class="section-title reveal">
-        <h2>사이트를 더 동적으로 만든 장치들</h2>
-        <p>JS로 숨 쉬는 페이지, CSS로 튀는 페이지.</p>
+    <section>
+      <div class="section-head reveal">
+        <h2>현장 판결 체험</h2>
+        <p>버튼을 눌러도 결론은 크게 달라지지 않습니다. 그게 이 코너의 핵심입니다.</p>
       </div>
 
-      <div class="facts">
-        <div class="fact-list reveal">
-          <ul>
-            <li><span class="icon">✨</span><span>스크롤할 때 카드가 자연스럽게 등장합니다.</span></li>
-            <li><span class="icon">📈</span><span>상단 진행바가 읽는 위치를 보여줍니다.</span></li>
-            <li><span class="icon">🧠</span><span>숫자가 자동으로 올라가는 카운터를 넣었습니다.</span></li>
-            <li><span class="icon">🔗</span><span>원문 페이지 링크를 바로 눌러 맥락까지 확인할 수 있습니다.</span></li>
-            <li><span class="icon">🌿</span><span>반응형 카드와 글로우 배경으로 더 화려하게 정리했습니다.</span></li>
-          </ul>
+      <div class="mini-stage">
+        <div class="battle-box reveal">
+          <h3>오늘의 선택지</h3>
+          <p>
+            솔직히 선택은 자유입니다. 다만 이 페이지는 그 자유를 매우 적극적으로 한 방향으로 유도합니다.
+          </p>
+          <div class="battle-choice">
+            <button class="choice" data-choice="salad" type="button">🥗 샐러드 쪽 들어보기</button>
+            <button class="choice" data-choice="noodle" type="button">🍜 메밀국수 편 들어보기</button>
+            <button class="choice" data-choice="truth" type="button">⚖️ 팩트만 보기</button>
+          </div>
+          <div class="result-box" id="resultBox">
+            버튼을 누르세요. 다만 결과는 이미 살짝 정해져 있습니다.
+          </div>
         </div>
 
-        <aside class="mini-panel reveal">
-          <div class="burst">🥗</div>
-          <h3 style="margin-top:0;">반박 모드 전환</h3>
-          <p style="margin-bottom:0; color:#334155;">
-            이 버튼을 누르면 페이지가 살짝 더 선명해집니다. 장난기와 반박 강도도 같이 올라갑니다.
-          </p>
-          <div class="toggle-row">
-            <button class="pill" id="modeToggle" type="button">반박 모드 켜기</button>
-            <a class="pill" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:inline-flex; align-items:center;">원문 보기</a>
+        <div class="one-liner-box reveal">
+          <h3>오늘의 한 줄 모음</h3>
+          <div class="one-liner-list">
+            <div class="liner">기름은 향을 얹고, 두부텐더는 존재감을 얹습니다.</div>
+            <div class="liner">차갑다고 허전한 게 아니라, 허전한 메뉴가 허전한 겁니다.</div>
+            <div class="liner">고소함은 장점이지만, 모든 장점을 대신 설명해주진 못합니다.</div>
+            <div class="liner">오늘의 위로는 국자가 아니라 포크에서 옵니다.</div>
           </div>
-        </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" id="decision">
+      <div class="footer-card reveal">
+        <div class="stamp">공식 판결 완료</div>
+        <h2>오늘 점심, 웃음과 논리 모두<br />두부텐더 샐러드 승</h2>
+        <p>
+          원문을 보고 와도, 반박문을 먼저 읽어도, 결국 남는 건 같은 결론입니다.
+          고소함은 인정. 하지만 오늘의 주인공은 두부텐더 샐러드입니다.
+        </p>
+        <div class="cta-row" style="justify-content:center;">
+          <a class="btn btn-primary" href="#rebuttal">반박 다시 보기</a>
+          <a class="btn btn-secondary" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">원문 다시 보기</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <div class="final" id="final">
-    <h2>차가워도 위로는 됩니다. 🥗</h2>
-    <p>
-      중요한 건 온도보다 납득입니다. 오늘의 승자는 두부텐더 샐러드.
-    </p>
-    <a class="btn secondary" href="#rebuttal">위로받으러 돌아가기 →</a>
-  </div>
-
   <footer>
-    원문을 존중하면서도, 더 웃기고 더 설득력 있게 반박하도록 만들었습니다.
+    이 페이지는 두부텐더 샐러드의 명예와 웃음을 위해 제작되었습니다.
   </footer>
 
   <script>
-    const progressBar = document.getElementById('progressBar');
-    const modeToggle = document.getElementById('modeToggle');
-    const counters = document.querySelectorAll('[data-count]');
-    const revealItems = document.querySelectorAll('.reveal');
-    const tiltCard = document.querySelector('[data-tilt]');
+    const progressBar = document.getElementById("progressBar");
+    const partyButton = document.getElementById("partyButton");
+    const truthMeter = document.getElementById("truthMeter");
+    const resultBox = document.getElementById("resultBox");
+    const emojiRain = document.getElementById("emojiRain");
+    const revealItems = document.querySelectorAll(".reveal");
+    const countItems = document.querySelectorAll("[data-count]");
+    const choiceButtons = document.querySelectorAll("[data-choice]");
+
+    const spawnEmoji = () => {
+      const pool = ["🥗", "✨", "💥", "🧊", "📣", "💚", "⚡"];
+      const el = document.createElement("span");
+      el.className = "emoji";
+      el.textContent = pool[Math.floor(Math.random() * pool.length)];
+      el.style.left = `${Math.random() * 100}vw`;
+      el.style.animationDuration = `${4 + Math.random() * 4}s`;
+      el.style.fontSize = `${20 + Math.random() * 18}px`;
+      emojiRain.appendChild(el);
+      setTimeout(() => el.remove(), 8500);
+    };
+
+    const burst = (count) => {
+      for (let i = 0; i < count; i += 1) {
+        setTimeout(spawnEmoji, i * 80);
+      }
+    };
 
     const animateCount = (el) => {
       const target = Number(el.dataset.count || 0);
-      const start = performance.now();
+      const started = Number(el.dataset.started || 0);
+      if (started) return;
+      el.dataset.started = "1";
+      const startTime = performance.now();
       const duration = 1100;
 
       const step = (now) => {
-        const p = Math.min((now - start) / duration, 1);
-        el.textContent = Math.floor(target * (0.2 + 0.8 * p));
+        const p = Math.min((now - startTime) / duration, 1);
+        el.textContent = Math.floor(target * p);
         if (p < 1) requestAnimationFrame(step);
         else el.textContent = target;
       };
@@ -717,44 +1057,49 @@
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          if (entry.target.querySelectorAll) {
-            entry.target.querySelectorAll('[data-count]').forEach(animateCount);
-          }
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("show");
+        entry.target.querySelectorAll?.("[data-count]").forEach(animateCount);
+        observer.unobserve(entry.target);
       });
-    }, { threshold: 0.18 });
+    }, { threshold: 0.15 });
 
     revealItems.forEach((item) => observer.observe(item));
 
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       const height = document.documentElement.scrollHeight - window.innerHeight;
       const percent = height > 0 ? (window.scrollY / height) * 100 : 0;
       progressBar.style.width = `${percent}%`;
     }, { passive: true });
 
-    modeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('fact-mode');
-      modeToggle.textContent = document.body.classList.contains('fact-mode')
-        ? '반박 모드 끄기'
-        : '반박 모드 켜기';
+    partyButton.addEventListener("click", () => {
+      document.body.classList.toggle("party-mode");
+      burst(16);
+      truthMeter.style.width = document.body.classList.contains("party-mode") ? "94%" : "86%";
+      partyButton.textContent = document.body.classList.contains("party-mode")
+        ? "파티 모드 껐다가 다시 켜기 🎉"
+        : "촌스럽지만 힙하게 더 보기 ✨";
     });
 
-    if (tiltCard) {
-      const rotate = (x, y) => {
-        const rect = tiltCard.getBoundingClientRect();
-        const dx = (x - rect.left) / rect.width - 0.5;
-        const dy = (y - rect.top) / rect.height - 0.5;
-        tiltCard.style.transform = `perspective(1000px) rotateX(${-(dy * 6)}deg) rotateY(${dx * 8}deg) translateY(-4px)`;
-      };
-
-      tiltCard.addEventListener('mousemove', (e) => rotate(e.clientX, e.clientY));
-      tiltCard.addEventListener('mouseleave', () => {
-        tiltCard.style.transform = '';
+    choiceButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const choice = button.dataset.choice;
+        if (choice === "salad") {
+          resultBox.textContent = "현명한 선택입니다. 포크를 든 순간부터 이미 토론은 끝났습니다. 바삭함, 단백질, 비주얼까지 모두 챙겼습니다.";
+          truthMeter.style.width = "100%";
+          burst(12);
+        } else if (choice === "noodle") {
+          resultBox.textContent = "의견은 존중합니다. 다만 현재 페이지 전체가 그 선택을 다소 안타까워하고 있습니다. 고소함 하나로 변호하기엔 오늘 반박문이 너무 강합니다.";
+          truthMeter.style.width = "74%";
+        } else {
+          resultBox.textContent = "팩트만 보면 이렇습니다. 차가움은 결격 사유가 아니고, 고소함은 모든 논리를 대체하지 못합니다. 그래서 두부텐더 샐러드 쪽 문장이 더 오래 남습니다.";
+          truthMeter.style.width = "92%";
+        }
       });
-    }
+    });
+
+    burst(10);
+    setInterval(spawnEmoji, 1400);
   </script>
 </body>
 </html>
