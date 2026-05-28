@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🥗 두부텐더 샐러드 대반격</title>
+  <title>🍲 오늘 점심 토론, 결과 나옴</title>
   <style>
     :root {
       --bg: #fffdf3;
@@ -15,7 +15,9 @@
       --yellow: #ffe45e;
       --orange: #ff914d;
       --sky: #7be7ff;
-      --paper: rgba(255, 255, 255, 0.82);
+      --soup: #f59e0b;
+      --soup-deep: #b45309;
+      --paper: rgba(255, 255, 255, 0.86);
       --shadow: 0 18px 45px rgba(43, 24, 47, 0.14);
       --line: rgba(27, 17, 32, 0.08);
     }
@@ -28,20 +30,15 @@
       color: var(--ink);
       line-height: 1.65;
       background:
-        radial-gradient(circle at 10% 10%, rgba(255, 79, 184, 0.18), transparent 24%),
-        radial-gradient(circle at 90% 10%, rgba(123, 231, 255, 0.22), transparent 24%),
-        radial-gradient(circle at 30% 70%, rgba(42, 211, 110, 0.20), transparent 28%),
-        linear-gradient(180deg, #fffef8 0%, var(--bg) 100%);
+        radial-gradient(circle at 10% 10%, rgba(255, 145, 77, 0.18), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(255, 228, 94, 0.30), transparent 26%),
+        radial-gradient(circle at 30% 70%, rgba(245, 158, 11, 0.18), transparent 28%),
+        linear-gradient(180deg, #fffef6 0%, var(--bg) 100%);
       overflow-x: hidden;
     }
 
     body.party-mode {
       filter: saturate(1.15) contrast(1.03);
-      background:
-        radial-gradient(circle at 15% 18%, rgba(255, 79, 184, 0.25), transparent 26%),
-        radial-gradient(circle at 88% 8%, rgba(123, 231, 255, 0.30), transparent 24%),
-        radial-gradient(circle at 22% 76%, rgba(42, 211, 110, 0.25), transparent 30%),
-        linear-gradient(180deg, #fffdf6 0%, #f7fff8 100%);
     }
 
     .bg-grid,
@@ -52,7 +49,7 @@
       z-index: -2;
     }
     .bg-grid {
-      opacity: 0.30;
+      opacity: 0.28;
       background-image:
         linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
@@ -60,8 +57,8 @@
       mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.4));
     }
     .bg-dots {
-      opacity: 0.45;
-      background-image: radial-gradient(rgba(255, 79, 184, 0.18) 1px, transparent 1px);
+      opacity: 0.40;
+      background-image: radial-gradient(rgba(245, 158, 11, 0.20) 1px, transparent 1px);
       background-size: 28px 28px;
       transform: rotate(-4deg) scale(1.08);
     }
@@ -78,8 +75,8 @@
       display: block;
       width: 0%;
       height: 100%;
-      background: linear-gradient(90deg, var(--pink), var(--yellow), var(--mint), var(--sky));
-      box-shadow: 0 0 24px rgba(255, 79, 184, 0.45);
+      background: linear-gradient(90deg, var(--soup), var(--yellow), var(--orange), var(--pink));
+      box-shadow: 0 0 24px rgba(245, 158, 11, 0.45);
     }
 
     .marquee {
@@ -87,10 +84,10 @@
       top: 6px;
       z-index: 40;
       overflow: hidden;
-      background: linear-gradient(90deg, var(--pink), var(--orange));
+      background: linear-gradient(90deg, var(--pink), var(--orange), var(--yellow));
       color: white;
       border-bottom: 3px solid rgba(255,255,255,0.45);
-      box-shadow: 0 12px 30px rgba(255, 79, 184, 0.20);
+      box-shadow: 0 12px 30px rgba(255, 145, 77, 0.20);
     }
     .marquee-track {
       display: inline-flex;
@@ -141,7 +138,6 @@
     }
 
     .glass {
-      position: relative;
       overflow: hidden;
       border-radius: 34px;
       padding: 34px 30px 30px;
@@ -178,27 +174,28 @@
     .badge.pink { background: #ffe1f3; color: var(--pink-deep); }
     .badge.green { background: #defae9; color: var(--mint-deep); }
     .badge.yellow { background: #fff4be; color: #916100; }
+    .badge.soup { background: #fef3c7; color: var(--soup-deep); }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.9rem, 7vw, 5.9rem);
-      line-height: 0.96;
-      letter-spacing: -0.055em;
+      font-size: clamp(2.6rem, 6.5vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
     }
     .strike {
       display: inline-block;
       text-decoration: line-through;
-      text-decoration-thickness: 12px;
-      text-decoration-color: rgba(214, 29, 133, 0.30);
+      text-decoration-thickness: 10px;
+      text-decoration-color: rgba(214, 29, 133, 0.28);
       color: rgba(27, 17, 32, 0.38);
       transform: rotate(-2deg);
     }
     .pop {
       display: inline-block;
-      color: var(--mint-deep);
+      color: var(--soup-deep);
       text-shadow:
         0 2px 0 #fff,
-        0 10px 30px rgba(42, 211, 110, 0.18);
+        0 10px 30px rgba(245, 158, 11, 0.22);
     }
 
     .hero-copy {
@@ -231,7 +228,7 @@
     }
     .btn:hover { transform: translateY(-3px) rotate(-1deg); filter: saturate(1.05); }
     .btn-primary {
-      background: linear-gradient(135deg, var(--mint), #7df0a5);
+      background: linear-gradient(135deg, var(--soup), var(--yellow));
       color: var(--ink);
     }
     .btn-secondary {
@@ -253,20 +250,21 @@
       font-weight: 900;
       box-shadow: 0 14px 25px rgba(27, 17, 32, 0.12);
       border: 2px solid rgba(255,255,255,0.85);
+      z-index: 3;
     }
     .sticker.one {
-      top: 20px;
-      right: 26px;
-      background: #fff4be;
-      color: #7a5100;
+      top: 18px;
+      right: 22px;
+      background: #fef3c7;
+      color: var(--soup-deep);
       transform: rotate(8deg);
       animation: wobble 2.3s ease-in-out infinite;
     }
     .sticker.two {
-      bottom: 20px;
-      right: 34px;
-      background: #dffcf1;
-      color: var(--mint-deep);
+      bottom: 18px;
+      right: 26px;
+      background: #ffe1f3;
+      color: var(--pink-deep);
       transform: rotate(-8deg);
       animation: wobble 2.6s ease-in-out infinite reverse;
     }
@@ -276,20 +274,19 @@
     }
 
     .judge-panel {
-      position: relative;
       border-radius: 34px;
       padding: 26px;
       overflow: hidden;
     }
     .judge-panel::before {
-      content: "VERDICT";
+      content: "REVEALED";
       position: absolute;
       top: 14px;
       right: -14px;
-      font-size: 4.2rem;
+      font-size: 3.6rem;
       font-weight: 900;
       letter-spacing: -0.05em;
-      color: rgba(255, 79, 184, 0.08);
+      color: rgba(245, 158, 11, 0.10);
       transform: rotate(-8deg);
       pointer-events: none;
     }
@@ -309,9 +306,9 @@
     .meter span {
       display: block;
       height: 100%;
-      width: 86%;
+      width: 92%;
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--yellow), var(--orange), var(--pink));
+      background: linear-gradient(90deg, var(--yellow), var(--orange), var(--soup-deep));
       transition: width 0.35s ease;
     }
     .meter-row {
@@ -329,13 +326,13 @@
     .judge-mini {
       padding: 16px 16px;
       border-radius: 22px;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.78);
       border: 1px solid var(--line);
     }
     .judge-mini strong {
       display: block;
       margin-bottom: 4px;
-      font-size: 1.08rem;
+      font-size: 1.05rem;
     }
     .count-wrap {
       display: grid;
@@ -352,7 +349,7 @@
     }
     .count-box b {
       display: block;
-      font-size: 1.75rem;
+      font-size: 1.7rem;
       line-height: 1;
       margin-bottom: 6px;
     }
@@ -374,14 +371,14 @@
     }
     .section-head h2 {
       margin: 0;
-      font-size: clamp(1.8rem, 4vw, 2.9rem);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
       letter-spacing: -0.05em;
     }
     .section-head p {
       margin: 0;
       color: #61596a;
       font-weight: 700;
-      max-width: 420px;
+      max-width: 440px;
       text-align: right;
     }
 
@@ -427,7 +424,6 @@
       gap: 18px;
     }
     .card {
-      position: relative;
       border-radius: 30px;
       padding: 24px 22px 22px;
       overflow: hidden;
@@ -448,10 +444,11 @@
       background: radial-gradient(circle, rgba(255,255,255,0.68), transparent 70%);
       pointer-events: none;
     }
-    .card.kick { background: linear-gradient(135deg, rgba(223,252,241,0.95), rgba(255,255,255,0.86)); }
-    .card.popcorn { background: linear-gradient(135deg, rgba(255,244,190,0.94), rgba(255,255,255,0.88)); }
-    .card.ice { background: linear-gradient(135deg, rgba(225,248,255,0.96), rgba(255,255,255,0.86)); }
-    .card.pink { background: linear-gradient(135deg, rgba(255,225,243,0.95), rgba(255,255,255,0.86)); }
+    .card.salad { background: linear-gradient(135deg, rgba(223,252,241,0.95), rgba(255,255,255,0.86)); }
+    .card.betray { background: linear-gradient(135deg, rgba(255,225,243,0.95), rgba(255,255,255,0.86)); }
+    .card.soup { background: linear-gradient(135deg, rgba(254,243,199,0.95), rgba(255,255,255,0.88)); }
+    .card.gavel { background: linear-gradient(135deg, rgba(255,244,190,0.94), rgba(255,255,255,0.88)); }
+
     .chip {
       display: inline-flex;
       align-items: center;
@@ -466,7 +463,7 @@
     }
     .card h3 {
       margin: 0 0 10px;
-      font-size: 1.38rem;
+      font-size: 1.36rem;
       line-height: 1.28;
       letter-spacing: -0.04em;
     }
@@ -492,17 +489,20 @@
     .shout {
       margin-top: 18px;
       border-radius: 30px;
-      padding: 22px;
-      background: linear-gradient(135deg, rgba(255,79,184,0.18), rgba(255,228,94,0.22), rgba(42,211,110,0.15));
+      padding: 26px 22px;
+      background: linear-gradient(135deg, rgba(255,145,77,0.22), rgba(255,228,94,0.30), rgba(245,158,11,0.20));
       box-shadow: var(--shadow);
-      border: 2px dashed rgba(27,17,32,0.12);
+      border: 2px dashed rgba(180, 83, 9, 0.30);
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
     .shout strong {
       display: block;
-      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      font-size: clamp(1.6rem, 4.5vw, 2.6rem);
       letter-spacing: -0.05em;
       margin-bottom: 8px;
+      color: var(--soup-deep);
     }
 
     .table-wrap {
@@ -514,7 +514,7 @@
       border-collapse: collapse;
     }
     thead {
-      background: linear-gradient(90deg, var(--pink), var(--orange), var(--yellow));
+      background: linear-gradient(90deg, var(--soup-deep), var(--orange), var(--yellow));
       color: white;
     }
     th, td {
@@ -527,16 +527,16 @@
       font-weight: 900;
     }
     tbody tr:nth-child(even) {
-      background: rgba(255, 79, 184, 0.03);
+      background: rgba(245, 158, 11, 0.04);
     }
-    .win { color: var(--mint-deep); font-weight: 900; }
+    .win { color: var(--soup-deep); font-weight: 900; }
     .lose { color: var(--pink-deep); font-weight: 800; }
+    .neutral { color: var(--mint-deep); font-weight: 800; }
 
     .quote-box {
       margin-top: 16px;
       border-radius: 28px;
-      padding: 22px 24px;
-      position: relative;
+      padding: 24px 26px;
     }
     .quote-box::before {
       content: "“";
@@ -544,7 +544,7 @@
       top: -14px;
       left: 16px;
       font-size: 4rem;
-      color: rgba(255, 79, 184, 0.20);
+      color: rgba(245, 158, 11, 0.30);
       font-weight: 900;
     }
     .quote-box p {
@@ -570,18 +570,17 @@
     .one-liner-box {
       border-radius: 30px;
       padding: 24px 22px;
-      box-shadow: var(--shadow);
     }
     .battle-box {
-      background: linear-gradient(135deg, rgba(255,225,243,0.94), rgba(255,255,255,0.86));
+      background: linear-gradient(135deg, rgba(254,243,199,0.95), rgba(255,255,255,0.86));
     }
     .one-liner-box {
-      background: linear-gradient(135deg, rgba(223,252,241,0.95), rgba(255,255,255,0.86));
+      background: linear-gradient(135deg, rgba(255,225,243,0.94), rgba(255,255,255,0.86));
     }
     .battle-box h3,
     .one-liner-box h3 {
       margin: 0 0 10px;
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       letter-spacing: -0.04em;
     }
     .battle-choice {
@@ -605,7 +604,7 @@
       margin-top: 14px;
       padding: 16px;
       border-radius: 22px;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.78);
       border: 1px solid var(--line);
       min-height: 90px;
       font-weight: 800;
@@ -619,7 +618,7 @@
     .liner {
       padding: 14px 16px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.80);
       border: 1px solid var(--line);
       font-weight: 900;
       letter-spacing: -0.02em;
@@ -629,21 +628,21 @@
       padding: 44px 0 64px;
     }
     .footer-card {
-      position: relative;
       overflow: hidden;
       border-radius: 34px;
-      padding: 34px 28px;
+      padding: 38px 28px;
       text-align: center;
       background:
-        radial-gradient(circle at 20% 20%, rgba(255, 228, 94, 0.28), transparent 26%),
-        radial-gradient(circle at 80% 10%, rgba(255, 79, 184, 0.18), transparent 26%),
-        radial-gradient(circle at 50% 85%, rgba(42, 211, 110, 0.20), transparent 24%),
-        rgba(255,255,255,0.84);
+        radial-gradient(circle at 20% 20%, rgba(255, 228, 94, 0.34), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(255, 145, 77, 0.24), transparent 28%),
+        radial-gradient(circle at 50% 85%, rgba(245, 158, 11, 0.24), transparent 28%),
+        rgba(255,255,255,0.86);
     }
     .footer-card h2 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 5vw, 3.3rem);
+      margin: 0 0 12px;
+      font-size: clamp(2.1rem, 5.2vw, 3.6rem);
       letter-spacing: -0.05em;
+      color: var(--soup-deep);
     }
     .footer-card p {
       margin: 0 auto 20px;
@@ -655,13 +654,13 @@
       display: inline-block;
       margin-bottom: 14px;
       padding: 10px 16px;
-      border: 4px solid var(--pink);
-      color: var(--pink-deep);
+      border: 4px solid var(--soup);
+      color: var(--soup-deep);
       border-radius: 16px;
       font-size: 1.1rem;
       font-weight: 900;
       transform: rotate(-7deg);
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.82);
       animation: pulse 1.8s ease-in-out infinite;
     }
     @keyframes pulse {
@@ -703,7 +702,7 @@
 
     footer {
       text-align: center;
-      padding: 0 0 24px;
+      padding: 10px 0 24px;
       color: #6b6271;
       font-size: 0.86rem;
       font-weight: 700;
@@ -729,9 +728,6 @@
         display: inline-flex;
         margin-top: 10px;
       }
-      .count-wrap {
-        grid-template-columns: repeat(3, 1fr);
-      }
     }
   </style>
 </head>
@@ -742,12 +738,12 @@
 
   <div class="marquee">
     <div class="marquee-track">
-      <span>🚨 긴급 속보: 들기름이 한 바퀴 돌 때 포크는 이미 두 번 움직였습니다 🚨</span>
-      <span>🥗 속보: 샐러드 그릇에서 바삭한 소리가 나자 주변 직장인들 고개를 들었습니다 🥗</span>
-      <span>🍜 제보: 메밀국수 측은 오늘도 고소함으로 모든 질문에 답하려 했습니다 🍜</span>
-      <span>🚨 긴급 속보: 들기름이 한 바퀴 돌 때 포크는 이미 두 번 움직였습니다 🚨</span>
-      <span>🥗 속보: 샐러드 그릇에서 바삭한 소리가 나자 주변 직장인들 고개를 들었습니다 🥗</span>
-      <span>🍜 제보: 메밀국수 측은 오늘도 고소함으로 모든 질문에 답하려 했습니다 🍜</span>
+      <span>🚨 긴급 속보: 들기름 메밀국수 그렇게 외치던 분, 점심으로 콩나물국밥 시키심 🚨</span>
+      <span>🍲 현장 목격: 같은 자리에서 너비아니까지 추가하셨다는 제보 🍲</span>
+      <span>🥗 한편 샐러드파는 진짜로 두부텐더 샐러드 먹고 자리로 돌아감 🥗</span>
+      <span>🚨 긴급 속보: 들기름 메밀국수 그렇게 외치던 분, 점심으로 콩나물국밥 시키심 🚨</span>
+      <span>🍲 현장 목격: 같은 자리에서 너비아니까지 추가하셨다는 제보 🍲</span>
+      <span>🥗 한편 샐러드파는 진짜로 두부텐더 샐러드 먹고 자리로 돌아감 🥗</span>
     </div>
   </div>
 
@@ -757,64 +753,67 @@
     <div class="shell hero-inner">
       <section class="glass reveal">
         <div class="eyebrow-row">
-          <div class="badge pink">💥 포크 비상</div>
-          <div class="badge green">🥗 샐러드 선두</div>
-          <div class="badge yellow">🍽️ 점심 회의록</div>
+          <div class="badge soup">🍲 오늘의 진짜 승자</div>
+          <div class="badge pink">📸 현장 사진 첨부됨</div>
+          <div class="badge yellow">🥄 본인이 직접 인증</div>
         </div>
 
         <h1>
           <span class="strike">들기름 메밀국수</span><br />
-          말이 많을수록<br />
-          <span class="pop">두부텐더 샐러드</span>가 웃습니다.
+          정작 본인이 시킨 건<br />
+          <span class="pop">콩나물국밥 + 너비아니</span>
         </h1>
 
         <p class="hero-copy">
-          원문은 고소함을 근거처럼 말하지만, 사실은 <strong>기름이 열심히 일한 것</strong>에 가깝습니다.
-          반면 두부텐더 샐러드는 바삭함, 단백질, 비주얼, 오후 생존력까지 챙깁니다.
-          결론은 간단합니다. <strong>오늘 점심 토론, 샐러드 쪽이 더 그럴듯합니다.</strong>
+          어제까지 그렇게 들기름의 고소함을 외치던 분이,
+          오늘 점심으로 <strong>콩나물국밥에 너비아니를 추가</strong>하는 모습이 포착됐습니다.
+          한편 샐러드파는 자기 말 그대로 두부텐더 샐러드를 먹고 자리로 돌아갔습니다.
+          <strong>오늘의 결론은 본인이 정해주고 가셨습니다.</strong>
         </p>
 
         <div class="cta-row">
-          <a class="btn btn-primary" href="#rebuttal">반박문 읽으러 가기 →</a>
-          <a class="btn btn-secondary" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">원문 보기 ↗</a>
-          <button class="btn btn-party" id="partyButton" type="button">촌스럽지만 힙하게 더 보기 ✨</button>
+          <a class="btn btn-primary" href="#rebuttal">사건 정황 보기 →</a>
+          <a class="btn btn-secondary" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">원문 다시 보기 ↗</a>
+          <button class="btn btn-party" id="partyButton" type="button">콩나물국밥 모드 ✨</button>
         </div>
 
-        <div class="sticker one">⚠️ 과장 검출됨</div>
-        <div class="sticker two">🥗 오늘의 유력 후보</div>
+        <div class="sticker one">🍲 최종 승자</div>
+        <div class="sticker two">😶‍🌫️ 본인 입장 없음</div>
       </section>
 
       <aside class="judge-panel reveal">
-        <h2>오늘의 판정 위원회</h2>
+        <h2>오늘의 점심 보고서</h2>
         <div class="meter"><span id="truthMeter"></span></div>
         <div class="meter-row">
-          <span>흔들림</span>
-          <span>확신</span>
+          <span>주장</span>
+          <span>실제 식사</span>
         </div>
 
         <div class="judge-card">
           <div class="judge-mini">
-            <strong>한 줄 판결</strong>
-            들기름 메밀국수는 고소하지만, 고소하다고 다 이기는 건 아닙니다.
+            <strong>들기름파 (저자 본인)</strong>
+            주장: 들기름 메밀국수.<br />
+            실제: <span class="line-mark">콩나물국밥 + 너비아니.</span>
           </div>
           <div class="judge-mini">
-            <strong>오늘의 문장</strong>
-            <span class="line-mark">위로는 온도가 아니라 만족도에서 온다.</span>
+            <strong>샐러드파</strong>
+            주장: 두부텐더 샐러드.<br />
+            실제: 진짜로 두부텐더 샐러드.
           </div>
         </div>
 
         <div class="count-wrap">
           <div class="count-box">
-            <b data-count="4">0</b>
-            <span>한입 역전</span>
+            <b data-count="1">0</b>
+            <span>약속 지킨 쪽</span>
           </div>
           <div class="count-box">
-            <b data-count="87">0</b>
-            <span>포크 자신감</span>
+            <b data-count="2">0</b>
+            <span>추가된 메뉴 수</span>
           </div>
           <div class="count-box">
             <b data-count="100">0</b>
-            <span>점심 확신도</span>
+            <span>국밥 우승 확정</span>
           </div>
         </div>
       </aside>
@@ -824,23 +823,23 @@
   <main class="shell">
     <section class="reveal">
       <div class="section-head">
-        <h2>맞다이 입장권</h2>
-        <p>궁금하면 저쪽도 보고 오세요. 그래도 포크는 이쪽으로 돌아옵니다.</p>
+        <h2>오늘의 자료</h2>
+        <p>주장한 사람과 먹은 사람이 다르면 그 토론은 거기서 끝납니다.</p>
       </div>
 
       <div class="evidence">
         <div class="evidence-grid">
           <a href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">
-            <span>상대편 구경</span>
-            <strong>메밀국수 측 입장 보기</strong>
+            <span>출발선</span>
+            <strong>들기름 메밀국수 주장하던 페이지</strong>
           </a>
           <a href="#rebuttal">
-            <span>핵심 문장</span>
-            <strong>샐러드 측 반격 보기</strong>
+            <span>전개</span>
+            <strong>점심시간에 벌어진 일</strong>
           </a>
           <a href="#decision">
-            <span>마지막 판결</span>
-            <strong>오늘 점심 결론 보기</strong>
+            <span>결말</span>
+            <strong>콩나물국밥 + 너비아니</strong>
           </a>
         </div>
       </div>
@@ -848,70 +847,67 @@
 
     <section id="rebuttal">
       <div class="section-head reveal">
-        <h2>주장 4개, 반박 4개</h2>
-        <p>고소함도 인정하고, 그 이상은 포크로 정리합니다.</p>
+        <h2>오늘 점심에 실제로 있었던 일</h2>
+        <p>주장은 시끄러웠지만, 식사는 조용히 다른 길로 갔습니다.</p>
       </div>
 
       <div class="card-grid">
-        <article class="card kick reveal">
-          <div class="chip">🍳 약점 자폭 금지</div>
-          <h3>“기름 부어서 맛있으면 튀김도 건강식임?”은 우리 편을 같이 때리는 문장입니다</h3>
+        <article class="card betray reveal">
+          <div class="chip">🍜 들기름파 (저자 본인)</div>
+          <h3>그토록 외치던 메밀국수, 정작 식판에는 안 보였습니다</h3>
           <p>
-            두부텐더가 튀김이라는 사실을 우리가 먼저 대문짝만 하게 외칠 필요는 없습니다.
-            더 나은 라인은 이겁니다.
-            <span class="line-mark">“들기름은 향을 얹지만, 두부텐더는 식감과 단백질을 같이 얹습니다.”</span>
-            이건 상대를 놀리면서도 우리 메뉴의 장점을 남깁니다.
+            어제까지 “들기름의 오메가-3”, “고소함의 차원”을 말씀하시던 분이,
+            오늘은 자연스럽게 <span class="line-mark">콩나물국밥</span>을 시키셨습니다.
+            메뉴판을 한참 보시더니, 들기름 메밀국수는 단 한 번도 거론되지 않았다고 합니다.
           </p>
-          <div class="verdict">✅ 포크 쪽 전략 수정 완료</div>
+          <div class="verdict">📸 1차 증거 확보</div>
         </article>
 
-        <article class="card ice reveal">
-          <div class="chip">🧊 논리 오류 압수</div>
-          <h3>샐러드가 차가워서 위로가 안 된다? 들기름 메밀국수도 차갑게 먹는 편 아닙니까</h3>
+        <article class="card soup reveal">
+          <div class="chip">🥩 추가 주문</div>
+          <h3>심지어 너비아니까지 같이 시키셨습니다</h3>
           <p>
-            여기서 중요한 건 온도계가 아니라 먹고 난 뒤의 표정입니다.
-            그래서 이번 문장은 이렇게 정리합니다.
-            <span class="line-mark">“차가워도 위로는 됩니다. 중요한 건 온도가 아니라 한 입 뒤의 납득입니다.”</span>
-            듣자마자 고개 끄덕여지는 쪽이 이긴 겁니다.
+            국밥 한 그릇으로 끝났으면 단순한 변심이지만,
+            <span class="line-mark">너비아니 추가</span>까지 가는 순간 이건 신념의 이동입니다.
+            들기름 한 바퀴는 어디 가고, 양념 잘 밴 너비아니가 오셨습니다.
           </p>
-          <div class="verdict">✅ 차가움 누명 해제</div>
+          <div class="verdict">🍖 2차 증거 확보</div>
         </article>
 
-        <article class="card popcorn reveal">
-          <div class="chip">🛢️ 과장 잡기</div>
-          <h3>원문은 “고소함”을 근거처럼 말하지만, 고소함은 사실 기름이 열일한 결과입니다</h3>
+        <article class="card salad reveal">
+          <div class="chip">🥗 샐러드파</div>
+          <h3>한편 샐러드파는 진짜로 두부텐더 샐러드 먹고 갔습니다</h3>
           <p>
-            들기름 메밀국수의 장점이 없다는 뜻은 아닙니다.
-            다만 모든 장점을 “오메가-3”와 “위로”로 포장하면 순간적으로
-            <span class="line-mark">건강식 발표회에 나온 광고 카피</span>처럼 들립니다.
-            샐러드는 적어도 바삭함, 색감, 단백질이라는 실물이 있습니다.
+            토론에서 외친 그대로, 두부텐더 샐러드를 시켜서 끝까지 드시고
+            자리로 돌아가셨습니다. 한 사람이라도 본인 말을 지켰다는 점에서,
+            <span class="line-mark">오늘의 약속 이행상은 샐러드파에게</span> 돌아갑니다.
           </p>
-          <div class="verdict">✅ 들기름 단독 캐리 인정 불가</div>
+          <div class="verdict">✅ 말과 행동 일치</div>
         </article>
 
-        <article class="card pink reveal">
-          <div class="chip">📣 최종 캐치프레이즈</div>
-          <h3>오늘의 제일 센 문장: 위로는 온도가 아니라 만족도에서 온다</h3>
+        <article class="card gavel reveal">
+          <div class="chip">⚖️ 정리</div>
+          <h3>결국 오늘의 진짜 우승 메뉴는 본인이 정해주셨습니다</h3>
           <p>
-            이 문장이 좋은 이유는 억지 비유가 없고, 상대 주장도 한 번에 무력화하기 때문입니다.
-            거기다 샐러드 쪽 이미지를 세련되게 올려줍니다.
-            <span class="line-mark">차갑다고 허전한 게 아니라, 허전한 메뉴가 허전한 겁니다.</span>
-            두부텐더가 들어가면 이야기가 달라집니다.
+            <span class="line-mark">콩나물국밥 + 너비아니</span>.
+            이 조합이 오늘 점심 토론의 모든 논쟁을 한 번에 끝냈습니다.
+            메밀국수도 아니고 샐러드도 아니고, 가장 시끄럽게 싸우던 본인이
+            가장 조용히 결론을 내고 가셨습니다.
           </p>
-          <div class="verdict">✅ 오늘의 결정타</div>
+          <div class="verdict">🍲 오늘의 최종 우승 메뉴</div>
         </article>
       </div>
 
       <div class="shout reveal">
-        <strong>최종 스코어: 샐러드 4 - 0 메밀국수</strong>
-        사내 공용 냉장고 앞 여론조사 기준으로도 대체로 이런 분위기입니다.
+        <strong>최종 승자: 콩나물국밥 + 너비아니</strong>
+        들기름 메밀국수를 외친 본인이 시키신 메뉴라, 더 이상의 반박이 어렵습니다.
       </div>
     </section>
 
     <section>
       <div class="section-head reveal">
-        <h2>정면 승부 표</h2>
-        <p>표가 들어가면 괜히 더 믿음직해 보이는 법입니다.</p>
+        <h2>오늘의 정리표</h2>
+        <p>말과 식판이 일치한 쪽, 그렇지 않은 쪽.</p>
       </div>
 
       <div class="table-wrap reveal">
@@ -919,75 +915,82 @@
           <thead>
             <tr>
               <th>항목</th>
-              <th>🥗 두부텐더 샐러드</th>
-              <th>🍜 들기름 메밀국수</th>
+              <th>🍜 들기름파 (저자)</th>
+              <th>🥗 샐러드파</th>
+              <th>🍲 콩나물국밥</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>첫인상</td>
-              <td class="win">색감부터 일단 이김</td>
-              <td class="lose">갈색의 진심</td>
+              <td>주장한 메뉴</td>
+              <td class="lose">들기름 메밀국수</td>
+              <td class="neutral">두부텐더 샐러드</td>
+              <td class="win">처음엔 거론도 안 됨</td>
             </tr>
             <tr>
-              <td>오후 생존력</td>
-              <td class="win">회의에서 영혼 유지</td>
-              <td class="lose">고소하게 졸림</td>
+              <td>실제로 먹은 것</td>
+              <td class="lose">콩나물국밥 + 너비아니</td>
+              <td class="neutral">두부텐더 샐러드</td>
+              <td class="win">저자 본인이 인증</td>
             </tr>
             <tr>
-              <td>주장 방식</td>
-              <td class="win">단백질과 식감으로 설득</td>
-              <td class="lose">기름이 다 했다</td>
+              <td>말과 행동 일치</td>
+              <td class="lose">완전 불일치</td>
+              <td class="neutral">완벽 일치</td>
+              <td class="win">결과적으로 1위</td>
             </tr>
             <tr>
-              <td>위로 논리</td>
-              <td class="win">차가워도 납득되면 위로</td>
-              <td class="lose">온도로 감정 재단</td>
+              <td>오늘의 위치</td>
+              <td class="lose">반박당함</td>
+              <td class="neutral">조용히 자기 길 감</td>
+              <td class="win">최종 우승</td>
             </tr>
             <tr>
-              <td>종합 코멘트</td>
-              <td class="win">오늘의 유죄 없는 승자</td>
-              <td class="lose">먹기 전보다 말이 많아짐</td>
+              <td>코멘트</td>
+              <td class="lose">고소함은 어디로?</td>
+              <td class="neutral">약속은 지켰음</td>
+              <td class="win">묵묵히 모두 정리</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div class="quote-box reveal">
-        <p>차가운 음식이 위로가 안 되는 게 아니라, 만족이 없는 음식이 위로가 안 되는 겁니다.</p>
-        <cite>— 두부텐더 샐러드 측 변호인단</cite>
+        <p>토론에서 이긴 메뉴가 우승 메뉴가 아니라, 토론한 사람이 시킨 메뉴가 우승 메뉴입니다.</p>
+        <cite>— 오늘 점심 시간 목격자 일동</cite>
       </div>
     </section>
 
     <section>
       <div class="section-head reveal">
-        <h2>현장 판결 체험</h2>
-        <p>마음은 자유롭지만 결과창은 다소 단호합니다.</p>
+        <h2>오늘의 점심 시뮬레이션</h2>
+        <p>버튼을 눌러도 결과는 이미 식판 위에 다 나와 있습니다.</p>
       </div>
 
       <div class="mini-stage">
         <div class="battle-box reveal">
-          <h3>오늘의 선택지</h3>
+          <h3>당신은 어느 편이었습니까?</h3>
           <p>
-            솔직히 선택은 자유입니다. 다만 오늘 분위기는 한 방향으로 제법 기울어 있습니다.
+            어느 쪽이든 괜찮습니다. 다만 오늘은 본인이 외친 메뉴를 본인이 안 드신 분이
+            한 분 계셨다는 것만 기억하면 됩니다.
           </p>
           <div class="battle-choice">
-            <button class="choice" data-choice="salad" type="button">🥗 샐러드 쪽 들어보기</button>
-            <button class="choice" data-choice="noodle" type="button">🍜 메밀국수 편 들어보기</button>
-            <button class="choice" data-choice="truth" type="button">⚖️ 팩트만 보기</button>
+            <button class="choice" data-choice="noodle" type="button">🍜 들기름 메밀국수 편이었음</button>
+            <button class="choice" data-choice="salad" type="button">🥗 두부텐더 샐러드 편이었음</button>
+            <button class="choice" data-choice="soup" type="button">🍲 사실 콩나물국밥 노렸음</button>
           </div>
           <div class="result-box" id="resultBox">
-            버튼을 누르세요. 결과는 생각보다 빠르게 포크 쪽으로 기웁니다.
+            셋 중 하나를 골라보세요. 결과는 본인이 어느 쪽이었든 같은 메뉴로 모입니다.
           </div>
         </div>
 
         <div class="one-liner-box reveal">
           <h3>오늘의 한 줄 모음</h3>
           <div class="one-liner-list">
-            <div class="liner">기름은 향을 얹고, 두부텐더는 존재감을 얹습니다.</div>
-            <div class="liner">차갑다고 허전한 게 아니라, 허전한 메뉴가 허전한 겁니다.</div>
-            <div class="liner">고소함은 장점이지만, 모든 장점을 대신 설명해주진 못합니다.</div>
-            <div class="liner">오늘의 위로는 국자가 아니라 포크에서 옵니다.</div>
+            <div class="liner">주장은 들기름, 식판은 국밥.</div>
+            <div class="liner">샐러드파는 그래도 자기 말은 지켰습니다.</div>
+            <div class="liner">너비아니가 들어간 순간 토론은 끝났습니다.</div>
+            <div class="liner">오늘의 우승 메뉴는 본인이 직접 인증해주셨습니다.</div>
           </div>
         </div>
       </div>
@@ -995,14 +998,15 @@
 
     <section class="final" id="decision">
       <div class="footer-card reveal">
-        <div class="stamp">공식 판결 완료</div>
-        <h2>오늘 점심,<br />두부텐더 샐러드 승</h2>
+        <div class="stamp">현장 인증 완료</div>
+        <h2>최종 승자<br />콩나물국밥 + 너비아니</h2>
         <p>
-          원문을 보고 와도, 반박문을 먼저 읽어도, 결국 남는 건 같은 결론입니다.
-          고소함은 인정. 하지만 오늘의 주인공은 두부텐더 샐러드입니다.
+          가장 시끄럽게 들기름 메밀국수를 외치신 분이, 가장 조용히 콩나물국밥에
+          너비아니까지 추가하고 가셨습니다. 오늘 점심의 결론은 본인이 정해주고
+          식판 위에 두고 가셨습니다.
         </p>
         <div class="cta-row" style="justify-content:center;">
-          <a class="btn btn-primary" href="#rebuttal">반박 다시 보기</a>
+          <a class="btn btn-primary" href="#rebuttal">사건 정황 다시 보기</a>
           <a class="btn btn-secondary" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">원문 다시 보기</a>
         </div>
       </div>
@@ -1018,11 +1022,10 @@
     const resultBox = document.getElementById("resultBox");
     const emojiRain = document.getElementById("emojiRain");
     const revealItems = document.querySelectorAll(".reveal");
-    const countItems = document.querySelectorAll("[data-count]");
     const choiceButtons = document.querySelectorAll("[data-choice]");
 
     const spawnEmoji = () => {
-      const pool = ["🥗", "✨", "💥", "🧊", "📣", "💚", "⚡"];
+      const pool = ["🍲", "🥩", "🥄", "✨", "📸", "🍚", "🌶️"];
       const el = document.createElement("span");
       el.className = "emoji";
       el.textContent = pool[Math.floor(Math.random() * pool.length)];
@@ -1041,19 +1044,16 @@
 
     const animateCount = (el) => {
       const target = Number(el.dataset.count || 0);
-      const started = Number(el.dataset.started || 0);
-      if (started) return;
+      if (el.dataset.started) return;
       el.dataset.started = "1";
       const startTime = performance.now();
       const duration = 1100;
-
       const step = (now) => {
         const p = Math.min((now - startTime) / duration, 1);
         el.textContent = Math.floor(target * p);
         if (p < 1) requestAnimationFrame(step);
         else el.textContent = target;
       };
-
       requestAnimationFrame(step);
     };
 
@@ -1076,26 +1076,22 @@
 
     partyButton.addEventListener("click", () => {
       document.body.classList.toggle("party-mode");
-      burst(16);
-      truthMeter.style.width = document.body.classList.contains("party-mode") ? "94%" : "86%";
+      burst(18);
       partyButton.textContent = document.body.classList.contains("party-mode")
-        ? "파티 모드 껐다가 다시 켜기 🎉"
-        : "촌스럽지만 힙하게 더 보기 ✨";
+        ? "콩나물국밥 모드 해제 🍲"
+        : "콩나물국밥 모드 ✨";
     });
 
     choiceButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const choice = button.dataset.choice;
-        if (choice === "salad") {
-          resultBox.textContent = "좋습니다. 포크를 든 순간부터 상황은 꽤 많이 정리됩니다. 바삭함, 단백질, 색감까지 한 번에 들어옵니다.";
-          truthMeter.style.width = "100%";
-          burst(12);
-        } else if (choice === "noodle") {
-          resultBox.textContent = "그 선택도 존중합니다. 다만 지금 분위기는 '고소함은 좋지만 오늘은 포크 쪽'에 조금 더 가깝습니다.";
-          truthMeter.style.width = "74%";
+        if (choice === "noodle") {
+          resultBox.textContent = "들기름 메밀국수 편이셨군요. 다만 오늘 그쪽 대표 선수가 콩나물국밥을 시키고 너비아니를 추가하셨습니다. 즉 오늘의 우승은 콩나물국밥 + 너비아니입니다.";
+        } else if (choice === "salad") {
+          resultBox.textContent = "샐러드파는 오늘 약속 이행상을 받으셨습니다. 다만 메뉴 자체의 우승은 본인이 외친 분이 시키신 콩나물국밥 + 너비아니로 갔습니다.";
         } else {
-          resultBox.textContent = "정리하면 이렇습니다. 차가움은 결격 사유가 아니고, 고소함은 모든 설명을 대신하지 못합니다. 그래서 오늘은 샐러드가 앞섭니다.";
-          truthMeter.style.width = "92%";
+          resultBox.textContent = "정답을 미리 보고 오셨군요. 오늘 점심의 모든 길은 콩나물국밥과 너비아니로 통합니다.";
+          burst(12);
         }
       });
     });
