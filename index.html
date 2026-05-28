@@ -3,437 +3,758 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🥗 두부텐더 샐러드가 맞습니다</title>
+  <title>🥗 두부텐더 샐러드 공식 반박문</title>
   <style>
     :root {
-      --green: #4ade80;
-      --dark-green: #16a34a;
-      --bg: #f0fdf4;
-      --card: #ffffff;
-      --text: #1a1a1a;
-      --muted: #6b7280;
-      --red: #ef4444;
+      --bg: #effdf4;
+      --card: rgba(255, 255, 255, 0.88);
+      --text: #102014;
+      --muted: #607060;
+      --green: #22c55e;
+      --green-dark: #15803d;
+      --green-deep: #14532d;
+      --lime: #bef264;
+      --red: #dc2626;
       --yellow: #facc15;
+      --shadow: 0 18px 50px rgba(16, 32, 20, 0.10);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-      background: var(--bg);
+      margin: 0;
+      font-family: Apple SD Gothic Neo, Malgun Gothic, sans-serif;
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 30%),
+        radial-gradient(circle at top right, rgba(250, 204, 21, 0.12), transparent 24%),
+        linear-gradient(180deg, #f8fff9 0%, var(--bg) 100%);
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, #bbf7d0 0%, #86efac 50%, #4ade80 100%);
-      text-align: center;
-      padding: 80px 24px 60px;
-      position: relative;
-      overflow: hidden;
+    body.fact-mode {
+      --bg: #f3fff7;
+      --green: #16a34a;
+      --lime: #86efac;
+      filter: saturate(1.08);
     }
-    .hero::before {
-      content: "🥗🥗🥗🥗🥗🥗🥗🥗🥗🥗";
-      position: absolute;
-      top: -10px; left: 0; right: 0;
-      font-size: 3rem;
-      opacity: 0.15;
-      letter-spacing: -4px;
+
+    a { color: inherit; }
+
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 5px;
+      background: rgba(16, 32, 20, 0.08);
+      z-index: 50;
+    }
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--green), var(--yellow));
+      transition: width 0.08s linear;
+    }
+
+    .ticker {
+      background: linear-gradient(90deg, var(--red), #f97316);
+      color: white;
+      font-weight: 800;
+      overflow: hidden;
       white-space: nowrap;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-    .hero .badge {
+    .ticker p {
+      margin: 0;
+      padding: 12px 0;
       display: inline-block;
-      background: #dc2626;
-      color: white;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 4px 14px;
-      border-radius: 100px;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .hero h1 span {
-      text-decoration: line-through;
-      opacity: 0.45;
-      font-size: 0.7em;
-    }
-    .hero p {
-      font-size: 1.15rem;
-      color: #166534;
-      max-width: 540px;
-      margin: 0 auto 36px;
-    }
-    .hero .cta {
-      display: inline-block;
-      background: #166534;
-      color: white;
-      padding: 14px 36px;
-      border-radius: 100px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform 0.2s;
-    }
-    .hero .cta:hover { transform: scale(1.05); }
-
-    /* ── SECTION BASE ── */
-    section { padding: 60px 24px; max-width: 720px; margin: 0 auto; }
-
-    h2 {
-      font-size: 1.75rem;
-      font-weight: 900;
-      margin-bottom: 32px;
-      text-align: center;
-    }
-
-    /* ── BREAKING NEWS BANNER ── */
-    .breaking {
-      background: #dc2626;
-      color: white;
-      text-align: center;
-      padding: 12px 24px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.5px;
-      overflow: hidden;
-    }
-    .breaking span {
-      display: inline-block;
-      animation: ticker 12s linear infinite;
+      animation: ticker 18s linear infinite;
     }
     @keyframes ticker {
-      0%   { transform: translateX(100vw); }
-      100% { transform: translateX(-100%); }
+      from { transform: translateX(100vw); }
+      to { transform: translateX(-100%); }
     }
 
-    /* ── REBUTTAL CARDS ── */
-    .cards { display: flex; flex-direction: column; gap: 24px; }
-    .card {
-      background: var(--card);
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-      border-left: 6px solid var(--green);
+    .hero {
       position: relative;
+      padding: 96px 20px 54px;
+      overflow: hidden;
     }
-    .card .their-claim {
-      font-size: 0.8rem;
-      color: var(--muted);
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,197,94,0.20), transparent 65%);
+      filter: blur(8px);
+      animation: float 12s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero::before { top: -120px; left: -120px; }
+    .hero::after { bottom: -160px; right: -120px; animation-delay: -6s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+      50% { transform: translateY(18px) translateX(10px) scale(1.06); }
+    }
+
+    .shell {
+      position: relative;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(20, 83, 45, 0.08);
+      color: var(--green-deep);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+    h1 .strike {
       text-decoration: line-through;
-      margin-bottom: 8px;
+      text-decoration-thickness: 10px;
+      text-decoration-color: rgba(220, 38, 38, 0.25);
+      color: rgba(16, 32, 20, 0.35);
+      display: inline-block;
+    }
+    h1 .accent {
+      display: inline-block;
+      color: var(--green-deep);
+      text-shadow: 0 8px 28px rgba(22, 163, 74, 0.15);
+    }
+
+    .hero p {
+      margin: 0 0 28px;
+      font-size: 1.1rem;
+      color: #284133;
+      max-width: 640px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 18px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+    .btn:hover { transform: translateY(-2px) scale(1.01); }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      color: white;
+    }
+    .btn.secondary {
+      background: rgba(255,255,255,0.85);
+      color: var(--green-deep);
+      border: 1px solid rgba(20, 83, 45, 0.12);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(20, 83, 45, 0.12);
+      border-radius: 28px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      transform-style: preserve-3d;
+    }
+    .hero-card .score {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .stat {
+      background: rgba(255,255,255,0.92);
+      border-radius: 20px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: inset 0 0 0 1px rgba(20,83,45,0.08);
+    }
+    .stat .num {
+      display: block;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--green-deep);
+    }
+    .stat .label {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 56px 0;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      letter-spacing: -0.03em;
+    }
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 420px;
+      text-align: right;
+    }
+
+    .links {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+    .link-card {
+      display: block;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(20,83,45,0.08);
+      text-decoration: none;
+      box-shadow: 0 10px 26px rgba(16, 32, 20, 0.06);
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+    .link-card:hover { transform: translateY(-2px); border-color: rgba(20,83,45,0.28); }
+    .link-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+    .link-card strong { font-size: 1rem; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .card {
+      position: relative;
+      background: var(--card);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(20,83,45,0.08);
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 58px rgba(16, 32, 20, 0.14);
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -35% auto;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(34,197,94,0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .card .tag {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(34,197,94,0.10);
+      color: var(--green-deep);
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 14px;
     }
     .card h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      color: var(--dark-green);
+      margin: 0 0 10px;
+      font-size: 1.22rem;
+      line-height: 1.35;
     }
-    .card p { color: #374151; font-size: 1rem; }
-    .card .emoji-big {
-      position: absolute;
-      top: 20px; right: 24px;
-      font-size: 2.5rem;
-      opacity: 0.8;
-    }
+    .card p { margin: 0; color: #334155; }
     .card .verdict {
-      display: inline-block;
-      background: #dcfce7;
-      color: #166534;
-      font-size: 0.82rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 100px;
-      margin-top: 14px;
+      display: inline-flex;
+      margin-top: 16px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(34,197,94,0.12);
+      color: var(--green-deep);
+      font-size: 0.84rem;
+      font-weight: 900;
     }
 
-    /* ── EVIDENCE CALLOUT ── */
     .callout {
-      background: #fef9c3;
-      border: 2px dashed #ca8a04;
-      border-radius: 16px;
-      padding: 24px 28px;
-      margin: 40px 0;
+      margin-top: 22px;
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(250,204,21,0.18), rgba(34,197,94,0.12));
+      border: 1px dashed rgba(20,83,45,0.18);
       text-align: center;
     }
-    .callout p { font-size: 1.05rem; color: #713f12; }
-    .callout strong { font-size: 1.5rem; display: block; margin-bottom: 6px; }
-
-    /* ── COMPARISON TABLE ── */
-    .table-wrap {
-      background: var(--card);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    .callout strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 6px;
     }
-    table { width: 100%; border-collapse: collapse; }
-    thead { background: #166534; color: white; }
-    thead th { padding: 16px 20px; font-size: 1rem; font-weight: 700; }
-    thead th:first-child { width: 30%; text-align: left; }
-    tbody tr:nth-child(even) { background: #f9fafb; }
-    tbody td { padding: 14px 20px; font-size: 0.95rem; text-align: center; }
-    tbody td:first-child { text-align: left; font-weight: 600; color: #374151; }
-    .win  { color: #16a34a; font-weight: 800; }
-    .lose { color: #dc2626; }
 
-    /* ── QUOTE ── */
+    .table-wrap {
+      background: rgba(255,255,255,0.85);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(20,83,45,0.08);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead {
+      background: linear-gradient(90deg, var(--green-dark), var(--green));
+      color: white;
+    }
+    th, td {
+      padding: 14px 16px;
+      text-align: center;
+      border-bottom: 1px solid rgba(20,83,45,0.08);
+    }
+    th:first-child, td:first-child { text-align: left; font-weight: 800; }
+    tbody tr:nth-child(even) { background: rgba(34,197,94,0.035); }
+    .win { color: var(--green-deep); font-weight: 900; }
+    .lose { color: var(--red); }
+
     blockquote {
-      background: var(--card);
-      border-left: 5px solid var(--green);
-      border-radius: 0 16px 16px 0;
-      padding: 24px 28px;
-      margin: 32px 0;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: #374151;
+      margin: 20px 0 0;
+      padding: 22px 22px 22px 26px;
+      border-radius: 0 18px 18px 0;
+      background: rgba(255,255,255,0.8);
+      border-left: 6px solid var(--green);
+      box-shadow: var(--shadow);
+      color: #274032;
     }
     blockquote cite {
       display: block;
       margin-top: 10px;
-      font-size: 0.85rem;
       color: var(--muted);
       font-style: normal;
+      font-size: 0.9rem;
     }
 
-    /* ── BONUS SECTION ── */
-    .fun-facts {
-      background: white;
-      border-radius: 20px;
-      padding: 36px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    .facts {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
     }
-    .fun-facts ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .fun-facts li {
-      display: flex;
+    .fact-list, .mini-panel {
+      background: rgba(255,255,255,0.85);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(20,83,45,0.08);
+    }
+    .fact-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
       gap: 12px;
-      align-items: flex-start;
-      font-size: 0.97rem;
-      color: #374151;
     }
-    .fun-facts li .icon { font-size: 1.3rem; flex-shrink: 0; }
+    .fact-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #334155;
+    }
+    .fact-list .icon { font-size: 1.2rem; line-height: 1.2; }
 
-    /* ── FINAL CTA ── */
+    .mini-panel {
+      position: relative;
+      overflow: hidden;
+    }
+    .mini-panel .burst {
+      position: absolute;
+      inset: auto -20px -20px auto;
+      font-size: 6rem;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .toggle-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .pill {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 800;
+      background: rgba(34,197,94,0.12);
+      color: var(--green-deep);
+    }
+
     .final {
-      background: linear-gradient(135deg, #166534, #15803d);
+      margin-top: 10px;
+      padding: 76px 20px 84px;
+      background: linear-gradient(135deg, var(--green-deep), #0f5132);
       color: white;
       text-align: center;
-      padding: 80px 24px;
     }
-    .final h2 { color: white; font-size: 2.2rem; margin-bottom: 16px; }
-    .final p { opacity: 0.85; font-size: 1.1rem; max-width: 480px; margin: 0 auto 36px; }
-    .final .cta {
-      display: inline-block;
+    .final h2 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+    }
+    .final p {
+      margin: 0 auto 26px;
+      max-width: 560px;
+      opacity: 0.9;
+    }
+    .final .btn.secondary {
       background: white;
-      color: #166534;
-      padding: 14px 40px;
-      border-radius: 100px;
-      font-size: 1.1rem;
-      font-weight: 800;
-      text-decoration: none;
+      color: var(--green-deep);
     }
 
-    /* ── FOOTER ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     footer {
       text-align: center;
-      padding: 24px;
-      font-size: 0.8rem;
+      padding: 22px 16px 30px;
       color: var(--muted);
-      background: #f9fafb;
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 880px) {
+      .hero-grid, .cards, .facts, .links { grid-template-columns: 1fr; }
+      .section-title { align-items: start; flex-direction: column; }
+      .section-title p { text-align: left; }
     }
   </style>
 </head>
 <body>
+  <div class="progress"><span id="progressBar"></span></div>
+  <div class="ticker"><p>🚨 긴급 팩트체크 | 원문 링크 포함 | 차가워도 위로는 된다 | 두부텐더 샐러드, 오늘의 정답 | 🥗🥗🥗</p></div>
 
-<!-- BREAKING NEWS -->
-<div class="breaking">
-  <span>🚨 긴급 팩트체크 🚨 &nbsp;|&nbsp; "들기름 메밀국수" 주장 전면 반박 &nbsp;|&nbsp; 두부텐더 샐러드 무죄 &nbsp;|&nbsp; 기름 한 바퀴의 진실 &nbsp;|&nbsp; 오늘도 샐러드가 옳습니다 &nbsp;|&nbsp; 🥗 🥗 🥗</span>
-</div>
+  <header class="hero">
+    <div class="shell hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">⚠️ 공식 반박문 · 반박 강도 MAX</div>
+        <h1>
+          <span class="strike">들기름 메밀국수</span>보다<br />
+          <span class="accent">두부텐더 샐러드</span>가<br />
+          더 그럴듯합니다.
+        </h1>
+        <p>
+          원문 페이지의 논리를 하나씩 뜯어보면, 샐러드가 진짜로 약한 게 아니라
+          주장 쪽이 너무 급합니다. 그래서 이번엔 더 재밌고, 더 날카롭게, 그리고 더 예쁘게 반박합니다.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#rebuttal">반박 본문 보기 →</a>
+          <a class="btn secondary" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">원문 페이지 열기 ↗</a>
+        </div>
+        <div class="links" aria-label="바로가기 링크">
+          <a class="link-card" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">
+            <span>근거 링크</span>
+            <strong>원문 주장 확인하기</strong>
+          </a>
+          <a class="link-card" href="#comparison">
+            <span>비교표</span>
+            <strong>실전 판정표 보기</strong>
+          </a>
+          <a class="link-card" href="#final">
+            <span>결론</span>
+            <strong>최종 한 줄 요약</strong>
+          </a>
+        </div>
+      </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="badge">⚠️ 공식 반박문</div>
-  <h1>
-    <span>들기름 메밀국수?</span><br/>
-    두부텐더 샐러드가<br/>맞습니다.
-  </h1>
-  <p>
-    저 사이트, 다 봤습니다. 기름 자랑을 그렇게 하더니<br/>
-    팩트는 하나도 없었습니다. 지금 바로잡겠습니다.
-  </p>
-  <a href="#rebuttal" class="cta">반박 보러 가기 →</a>
-</div>
-
-<!-- REBUTTAL -->
-<section id="rebuttal">
-  <h2>4가지 주장, 4가지 반박</h2>
-  <div class="cards">
-
-    <div class="card">
-      <span class="emoji-big">🛢️</span>
-      <div class="their-claim">❝ 들기름의 오메가-3… 고소함의 차원이 다르다 ❞</div>
-      <h3>기름 부어서 맛있으면 튀김도 건강식임?</h3>
-      <p>
-        들기름 1큰술 = 약 120kcal. 고소함이 차원이 다른 게 아니라 <strong>칼로리가 차원이 다른 겁니다.</strong>
-        두부텐더 샐러드는 드레싱 조절이 가능합니다. 자기결정권이 있습니다.
-        들기름 한 바퀴는 멈출 수가 없습니다. 이게 진짜 함정입니다.
-      </p>
-      <span class="verdict">✅ 샐러드 승</span>
+      <aside class="hero-card reveal" data-tilt>
+        <div class="score">
+          <div class="stat">
+            <span class="num" data-count="4">0</span>
+            <span class="label">반박 포인트</span>
+          </div>
+          <div class="stat">
+            <span class="num" data-count="1">0</span>
+            <span class="label">원문 링크</span>
+          </div>
+          <div class="stat">
+            <span class="num" data-count="99">0</span>
+            <span class="label">과장지수</span>
+          </div>
+          <div class="stat">
+            <span class="num" data-count="100">0</span>
+            <span class="label">웃음지수</span>
+          </div>
+        </div>
+      </aside>
     </div>
+  </header>
 
-    <div class="card">
-      <span class="emoji-big">😴</span>
-      <div class="their-claim">❝ 메밀국수는 포만감은 채우되 더부룩하지 않아 오후 업무가 산뜻 ❞</div>
-      <h3>국수 먹고 오후에 안 졸린 사람 손 들어보세요</h3>
-      <p>
-        탄수화물 + 따뜻한 국물 = <strong>생체 수면제</strong>입니다.
-        점심 식사 후 집중력 저하는 과학입니다. 반면 샐러드의 섬유질과 단백질(두부텐더!)은
-        혈당 스파이크를 막아 오후 2시에도 눈이 떠져 있게 해 줍니다.
-        오후 회의에서 살아남고 싶다면 샐러드입니다.
-      </p>
-      <span class="verdict">✅ 샐러드 승</span>
-    </div>
+  <main class="shell">
+    <section id="rebuttal">
+      <div class="section-title reveal">
+        <h2>4가지 주장, 4가지 반박</h2>
+        <p>논리 오류는 줄이고, 드립과 링크는 늘렸습니다.</p>
+      </div>
 
-    <div class="card">
-      <span class="emoji-big">🤔</span>
-      <div class="their-claim">❝ 메밀은 저칼로리 통곡물, 들기름은 착한 지방 ❞</div>
-      <h3>"착한 지방"이라는 말로 지방을 덮을 수는 없습니다</h3>
-      <p>
-        오메가-3 섭취가 목적이라면 그냥 영양제 드세요.
-        두부텐더 샐러드의 두부는 <strong>이소플라본 + 식물성 단백질의 결정체</strong>입니다.
-        "텐더"라는 이름이 붙은 이유가 있습니다. 맛있기 때문입니다. 근거 없이 깎아내리지 마세요.
-      </p>
-      <span class="verdict">✅ 샐러드 승</span>
-    </div>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="tag">🍳 논점 수정</div>
+          <h3>기름 부어서 맛있으면 튀김도 건강식임? → 자기 단점 강조는 하지 말자</h3>
+          <p>
+            이 문장은 너무 세게 나가서, 오히려 <strong>두부텐더가 튀김이라는 사실만 크게 보이게</strong> 합니다.
+            그래서 아예 이렇게 바꾸는 게 낫습니다:
+            <br /><strong>“튀김이라도, 두부텐더는 단백질과 식감이 남습니다.”</strong>
+            <br />즉, 약점을 공격하는 게 아니라 장점을 설득하는 방향으로 가야 합니다.
+          </p>
+          <span class="verdict">✅ 더 똑똑한 반박</span>
+        </article>
 
-    <div class="card">
-      <span class="emoji-big">🧊</span>
-      <div class="their-claim">❝ 차가운 두부텐더는 위로가 안 됩니다 ❞</div>
-      <h3>아이스크림도 위로가 안 됩니까?</h3>
-      <p>
-        차갑다 = 위로 안 된다 는 <strong>완전히 틀린 등식</strong>입니다.
-        아이스크림, 냉면, 수박, 맥주. 인류가 더위와 스트레스에 맞서 선택한 모든 해답은 차갑습니다.
-        "따뜻해야 위로"라는 건 어디서 나온 말입니까. 출처를 대십시오.
-        두부텐더 샐러드는 쿨하기 때문에 위로가 됩니다. 문자 그대로.
-      </p>
-      <span class="verdict">✅ 샐러드 승</span>
-    </div>
+        <article class="card reveal">
+          <div class="tag">🌡️ 논리 보정</div>
+          <h3>“차가워서 위로가 안 된다”는 주장부터가 너무 좁습니다</h3>
+          <p>
+            원문이 샐러드를 차갑다고 놀리지만, 들기름 메밀국수도 차갑게 먹는 경우가 많습니다.
+            그러면 핵심은 온도가 아니라 <strong>먹고 나서 마음이 납득하느냐</strong>가 됩니다.
+            그래서 캐치프레이즈는 이쪽이 더 좋습니다:
+            <br /><strong>“위로는 온도가 아니라 만족도에서 온다.”</strong>
+          </p>
+          <span class="verdict">✅ 더 정확한 한 줄</span>
+        </article>
 
+        <article class="card reveal">
+          <div class="tag">📣 링크형 반박</div>
+          <h3>상대 페이지를 직접 보여주고, 그 위에 반박을 얹자</h3>
+          <p>
+            지금처럼 원문을 <a href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">직접 링크</a>로 걸어두면
+            패러디가 아니라 <strong>공개 토론</strong>처럼 보입니다.
+            “저 링크를 봐도 샐러드가 더 낫다”는 구조가 생기면, 장난감 같은 페이지가 아니라
+            진짜 반박 콘텐츠가 됩니다.
+          </p>
+          <span class="verdict">✅ 근거까지 같이 제시</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="tag">🧊 최종 문구</div>
+          <h3>“아이스크림도 위로가 안 됩니까?” 대신 이쪽이 더 세다</h3>
+          <p>
+            이건 너무 억지로 웃기려는 느낌이 있어서, 살짝 더 정교하게 바꾸겠습니다.
+            <br /><strong>“차가워도 위로는 됩니다. 중요한 건 온도가 아니라 한 입 뒤의 표정이죠.”</strong>
+            <br />이렇게 가면 반박도 되고, 말맛도 살아납니다.
+          </p>
+          <span class="verdict">✅ 캐치프레이즈 교체 완료</span>
+        </article>
+      </div>
+
+      <div class="callout reveal">
+        <strong>최종 스코어: 샐러드 4 - 0 메밀국수</strong>
+        <span>이제는 기름이 아니라 논리로 승부합시다.</span>
+      </div>
+    </section>
+
+    <section id="comparison">
+      <div class="section-title reveal">
+        <h2>정면 승부</h2>
+        <p>연출은 화려하게, 판정은 냉정하게.</p>
+      </div>
+      <div class="table-wrap reveal">
+        <table>
+          <thead>
+            <tr>
+              <th>항목</th>
+              <th>🥗 두부텐더 샐러드</th>
+              <th>🍜 들기름 메밀국수</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>오후 생존율</td>
+              <td class="win">눈 뜨고 회의 참여</td>
+              <td class="lose">졸음과 함께 회의 입장</td>
+            </tr>
+            <tr>
+              <td>논리의 힘</td>
+              <td class="win">단백질 + 링크 + 반박</td>
+              <td class="lose">고소함 + 추측 + 과장</td>
+            </tr>
+            <tr>
+              <td>먹고 난 기분</td>
+              <td class="win">가볍고 든든함</td>
+              <td class="lose">나른하고 고소함</td>
+            </tr>
+            <tr>
+              <td>비주얼</td>
+              <td class="win">색감이 살아남</td>
+              <td class="lose">갈색 우주</td>
+            </tr>
+            <tr>
+              <td>최종 코멘트</td>
+              <td class="win">오늘의 현명한 선택</td>
+              <td class="lose">기름을 기름으로 설득</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <blockquote class="reveal">
+        “차가워서 위로가 안 되는 게 아니라, 위로의 조건을 온도 하나로 줄여버리는 게 문제다.”
+        <cite>— 두부텐더 샐러드 옹호위원회</cite>
+      </blockquote>
+    </section>
+
+    <section id="bonus">
+      <div class="section-title reveal">
+        <h2>사이트를 더 동적으로 만든 장치들</h2>
+        <p>JS로 숨 쉬는 페이지, CSS로 튀는 페이지.</p>
+      </div>
+
+      <div class="facts">
+        <div class="fact-list reveal">
+          <ul>
+            <li><span class="icon">✨</span><span>스크롤할 때 카드가 자연스럽게 등장합니다.</span></li>
+            <li><span class="icon">📈</span><span>상단 진행바가 읽는 위치를 보여줍니다.</span></li>
+            <li><span class="icon">🧠</span><span>숫자가 자동으로 올라가는 카운터를 넣었습니다.</span></li>
+            <li><span class="icon">🔗</span><span>원문 페이지 링크를 바로 눌러 맥락까지 확인할 수 있습니다.</span></li>
+            <li><span class="icon">🌿</span><span>반응형 카드와 글로우 배경으로 더 화려하게 정리했습니다.</span></li>
+          </ul>
+        </div>
+
+        <aside class="mini-panel reveal">
+          <div class="burst">🥗</div>
+          <h3 style="margin-top:0;">반박 모드 전환</h3>
+          <p style="margin-bottom:0; color:#334155;">
+            이 버튼을 누르면 페이지가 살짝 더 선명해집니다. 장난기와 반박 강도도 같이 올라갑니다.
+          </p>
+          <div class="toggle-row">
+            <button class="pill" id="modeToggle" type="button">반박 모드 켜기</button>
+            <a class="pill" href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:inline-flex; align-items:center;">원문 보기</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="final" id="final">
+    <h2>차가워도 위로는 됩니다. 🥗</h2>
+    <p>
+      중요한 건 온도보다 납득입니다. 오늘의 승자는 두부텐더 샐러드.
+    </p>
+    <a class="btn secondary" href="#rebuttal">위로받으러 돌아가기 →</a>
   </div>
 
-  <div class="callout">
-    <strong>🏆 최종 스코어: 샐러드 4 - 0 메밀국수</strong>
-    <p>압도적 승리입니다. 이의 있습니까?</p>
-  </div>
-</section>
+  <footer>
+    원문을 존중하면서도, 더 웃기고 더 설득력 있게 반박하도록 만들었습니다.
+  </footer>
 
-<!-- TABLE -->
-<section>
-  <h2>정면 승부 (진짜 버전)</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>항목</th>
-          <th>🥗 두부텐더 샐러드</th>
-          <th>🍜 들기름 메밀국수</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>오후 생존율</td>
-          <td class="win">👀 눈 뜨고 있음</td>
-          <td class="lose">😴 책상에서 기절</td>
-        </tr>
-        <tr>
-          <td>칼로리 투명성</td>
-          <td class="win">✅ 드레싱 조절 가능</td>
-          <td class="lose">❓ 들기름 몇 바퀴째?</td>
-        </tr>
-        <tr>
-          <td>먹고 난 기분</td>
-          <td class="win">😎 가볍고 쿨함</td>
-          <td class="lose">🥱 나른하고 기름짐</td>
-        </tr>
-        <tr>
-          <td>단백질</td>
-          <td class="win">💪 두부텐더 든든</td>
-          <td class="lose">🤷 면이 단백질?</td>
-        </tr>
-        <tr>
-          <td>인스타 비주얼</td>
-          <td class="win">📸 색감 미침</td>
-          <td class="lose">🟤 갈색 면 갈색 소스</td>
-        </tr>
-        <tr>
-          <td>위로 여부</td>
-          <td class="win">🧊 쿨한 위로</td>
-          <td class="lose">🛢️ 기름으로 때우는 위로</td>
-        </tr>
-        <tr>
-          <td>총평</td>
-          <td class="win">✨ 오늘의 승자</td>
-          <td class="lose">📜 근거 없는 자신감</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <script>
+    const progressBar = document.getElementById('progressBar');
+    const modeToggle = document.getElementById('modeToggle');
+    const counters = document.querySelectorAll('[data-count]');
+    const revealItems = document.querySelectorAll('.reveal');
+    const tiltCard = document.querySelector('[data-tilt]');
 
-  <blockquote>
-    "들기름은 오늘도 먹을 수 있고, 내일도 먹을 수 있다.<br/>
-    두부텐더 샐러드는 오늘의 가장 현명한 선택이다."
-    <cite>— 팩트를 진지하게 고민하는 모든 직장인</cite>
-  </blockquote>
-</section>
+    const animateCount = (el) => {
+      const target = Number(el.dataset.count || 0);
+      const start = performance.now();
+      const duration = 1100;
 
-<!-- FUN FACTS -->
-<section>
-  <h2>저쪽 사이트가 말 안 해준 것들</h2>
-  <div class="fun-facts">
-    <ul>
-      <li>
-        <span class="icon">🍜</span>
-        <span>메밀국수의 "고소함이 코끝으로 퍼진다"는 표현—들기름 냄새가 옷에도 퍼집니다. 오후 미팅 전 생각해보세요.</span>
-      </li>
-      <li>
-        <span class="icon">🥗</span>
-        <span>두부텐더는 <strong>튀긴 두부</strong>입니다. "텐더"라는 이름답게 바삭하고 든든합니다. 진짜 샐러드의 위상을 높인 존재입니다.</span>
-      </li>
-      <li>
-        <span class="icon">📊</span>
-        <span>저쪽 사이트의 비교표에서 샐러드 측 항목을 보셨나요? "먹고도 허전함"이라고 적혀 있습니다. <strong>두부텐더가 들어간 샐러드를 먹어본 적 없는 겁니다.</strong></span>
-      </li>
-      <li>
-        <span class="icon">⏰</span>
-        <span>"오늘의 들기름 메밀국수는 오늘뿐이다"—이 말은 샐러드에도 똑같이 성립합니다. 오늘의 두부텐더 샐러드도 오늘뿐입니다. 논리가 없습니다.</span>
-      </li>
-      <li>
-        <span class="icon">🧠</span>
-        <span>샐러드는 씹는 횟수가 많아 뇌 활성화에 도움이 됩니다. 국수는 슥슥 넘어갑니다. <strong>슥슥 넘어가는 점심은 기억에도 슥슥 사라집니다.</strong></span>
-      </li>
-    </ul>
-  </div>
-</section>
+      const step = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = Math.floor(target * (0.2 + 0.8 * p));
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      };
 
-<!-- FINAL CTA -->
-<div class="final">
-  <h2>포크를 들 시간입니다. 🥗</h2>
-  <p>
-    고소함에 속지 마세요.<br/>
-    오늘 점심, 정답은 이미 나왔습니다.
-  </p>
-  <a href="#rebuttal" class="cta">✅ 두부텐더 샐러드 선택하기</a>
-</div>
+      requestAnimationFrame(step);
+    };
 
-<footer>
-  이 페이지는 진심으로 두부텐더 샐러드를 지지합니다 🥗<br/>
-  &copy; 2025 두부텐더 샐러드 옹호위원회 | 들기름과는 아무 관계 없음
-</footer>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          if (entry.target.querySelectorAll) {
+            entry.target.querySelectorAll('[data-count]').forEach(animateCount);
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
 
+    revealItems.forEach((item) => observer.observe(item));
+
+    window.addEventListener('scroll', () => {
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = height > 0 ? (window.scrollY / height) * 100 : 0;
+      progressBar.style.width = `${percent}%`;
+    }, { passive: true });
+
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('fact-mode');
+      modeToggle.textContent = document.body.classList.contains('fact-mode')
+        ? '반박 모드 끄기'
+        : '반박 모드 켜기';
+    });
+
+    if (tiltCard) {
+      const rotate = (x, y) => {
+        const rect = tiltCard.getBoundingClientRect();
+        const dx = (x - rect.left) / rect.width - 0.5;
+        const dy = (y - rect.top) / rect.height - 0.5;
+        tiltCard.style.transform = `perspective(1000px) rotateX(${-(dy * 6)}deg) rotateY(${dx * 8}deg) translateY(-4px)`;
+      };
+
+      tiltCard.addEventListener('mousemove', (e) => rotate(e.clientX, e.clientY));
+      tiltCard.addEventListener('mouseleave', () => {
+        tiltCard.style.transform = '';
+      });
+    }
+  </script>
 </body>
 </html>
