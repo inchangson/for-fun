@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🥗 두부텐더 샐러드가 맞습니다</title>
+  <style>
+    :root {
+      --green: #4ade80;
+      --dark-green: #16a34a;
+      --bg: #f0fdf4;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --red: #ef4444;
+      --yellow: #facc15;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #bbf7d0 0%, #86efac 50%, #4ade80 100%);
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "🥗🥗🥗🥗🥗🥗🥗🥗🥗🥗";
+      position: absolute;
+      top: -10px; left: 0; right: 0;
+      font-size: 3rem;
+      opacity: 0.15;
+      letter-spacing: -4px;
+      white-space: nowrap;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #dc2626;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      text-decoration: line-through;
+      opacity: 0.45;
+      font-size: 0.7em;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: #166534;
+      max-width: 540px;
+      margin: 0 auto 36px;
+    }
+    .hero .cta {
+      display: inline-block;
+      background: #166534;
+      color: white;
+      padding: 14px 36px;
+      border-radius: 100px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .hero .cta:hover { transform: scale(1.05); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 60px 24px; max-width: 720px; margin: 0 auto; }
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 900;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    /* ── BREAKING NEWS BANNER ── */
+    .breaking {
+      background: #dc2626;
+      color: white;
+      text-align: center;
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      overflow: hidden;
+    }
+    .breaking span {
+      display: inline-block;
+      animation: ticker 12s linear infinite;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* ── REBUTTAL CARDS ── */
+    .cards { display: flex; flex-direction: column; gap: 24px; }
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border-left: 6px solid var(--green);
+      position: relative;
+    }
+    .card .their-claim {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: line-through;
+      margin-bottom: 8px;
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--dark-green);
+    }
+    .card p { color: #374151; font-size: 1rem; }
+    .card .emoji-big {
+      position: absolute;
+      top: 20px; right: 24px;
+      font-size: 2.5rem;
+      opacity: 0.8;
+    }
+    .card .verdict {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-top: 14px;
+    }
+
+    /* ── EVIDENCE CALLOUT ── */
+    .callout {
+      background: #fef9c3;
+      border: 2px dashed #ca8a04;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 40px 0;
+      text-align: center;
+    }
+    .callout p { font-size: 1.05rem; color: #713f12; }
+    .callout strong { font-size: 1.5rem; display: block; margin-bottom: 6px; }
+
+    /* ── COMPARISON TABLE ── */
+    .table-wrap {
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead { background: #166534; color: white; }
+    thead th { padding: 16px 20px; font-size: 1rem; font-weight: 700; }
+    thead th:first-child { width: 30%; text-align: left; }
+    tbody tr:nth-child(even) { background: #f9fafb; }
+    tbody td { padding: 14px 20px; font-size: 0.95rem; text-align: center; }
+    tbody td:first-child { text-align: left; font-weight: 600; color: #374151; }
+    .win  { color: #16a34a; font-weight: 800; }
+    .lose { color: #dc2626; }
+
+    /* ── QUOTE ── */
+    blockquote {
+      background: var(--card);
+      border-left: 5px solid var(--green);
+      border-radius: 0 16px 16px 0;
+      padding: 24px 28px;
+      margin: 32px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #374151;
+    }
+    blockquote cite {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* ── BONUS SECTION ── */
+    .fun-facts {
+      background: white;
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    .fun-facts ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .fun-facts li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 0.97rem;
+      color: #374151;
+    }
+    .fun-facts li .icon { font-size: 1.3rem; flex-shrink: 0; }
+
+    /* ── FINAL CTA ── */
+    .final {
+      background: linear-gradient(135deg, #166534, #15803d);
+      color: white;
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .final h2 { color: white; font-size: 2.2rem; margin-bottom: 16px; }
+    .final p { opacity: 0.85; font-size: 1.1rem; max-width: 480px; margin: 0 auto 36px; }
+    .final .cta {
+      display: inline-block;
+      background: white;
+      color: #166534;
+      padding: 14px 40px;
+      border-radius: 100px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: #f9fafb;
+    }
+  </style>
+</head>
+<body>
+
+<!-- BREAKING NEWS -->
+<div class="breaking">
+  <span>🚨 긴급 팩트체크 🚨 &nbsp;|&nbsp; "들기름 메밀국수" 주장 전면 반박 &nbsp;|&nbsp; 두부텐더 샐러드 무죄 &nbsp;|&nbsp; 기름 한 바퀴의 진실 &nbsp;|&nbsp; 오늘도 샐러드가 옳습니다 &nbsp;|&nbsp; 🥗 🥗 🥗</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">⚠️ 공식 반박문</div>
+  <h1>
+    <span>들기름 메밀국수?</span><br/>
+    두부텐더 샐러드가<br/>맞습니다.
+  </h1>
+  <p>
+    저 사이트, 다 봤습니다. 기름 자랑을 그렇게 하더니<br/>
+    팩트는 하나도 없었습니다. 지금 바로잡겠습니다.
+  </p>
+  <a href="#rebuttal" class="cta">반박 보러 가기 →</a>
+</div>
+
+<!-- REBUTTAL -->
+<section id="rebuttal">
+  <h2>4가지 주장, 4가지 반박</h2>
+  <div class="cards">
+
+    <div class="card">
+      <span class="emoji-big">🛢️</span>
+      <div class="their-claim">❝ 들기름의 오메가-3… 고소함의 차원이 다르다 ❞</div>
+      <h3>기름 부어서 맛있으면 튀김도 건강식임?</h3>
+      <p>
+        들기름 1큰술 = 약 120kcal. 고소함이 차원이 다른 게 아니라 <strong>칼로리가 차원이 다른 겁니다.</strong>
+        두부텐더 샐러드는 드레싱 조절이 가능합니다. 자기결정권이 있습니다.
+        들기름 한 바퀴는 멈출 수가 없습니다. 이게 진짜 함정입니다.
+      </p>
+      <span class="verdict">✅ 샐러드 승</span>
+    </div>
+
+    <div class="card">
+      <span class="emoji-big">😴</span>
+      <div class="their-claim">❝ 메밀국수는 포만감은 채우되 더부룩하지 않아 오후 업무가 산뜻 ❞</div>
+      <h3>국수 먹고 오후에 안 졸린 사람 손 들어보세요</h3>
+      <p>
+        탄수화물 + 따뜻한 국물 = <strong>생체 수면제</strong>입니다.
+        점심 식사 후 집중력 저하는 과학입니다. 반면 샐러드의 섬유질과 단백질(두부텐더!)은
+        혈당 스파이크를 막아 오후 2시에도 눈이 떠져 있게 해 줍니다.
+        오후 회의에서 살아남고 싶다면 샐러드입니다.
+      </p>
+      <span class="verdict">✅ 샐러드 승</span>
+    </div>
+
+    <div class="card">
+      <span class="emoji-big">🤔</span>
+      <div class="their-claim">❝ 메밀은 저칼로리 통곡물, 들기름은 착한 지방 ❞</div>
+      <h3>"착한 지방"이라는 말로 지방을 덮을 수는 없습니다</h3>
+      <p>
+        오메가-3 섭취가 목적이라면 그냥 영양제 드세요.
+        두부텐더 샐러드의 두부는 <strong>이소플라본 + 식물성 단백질의 결정체</strong>입니다.
+        "텐더"라는 이름이 붙은 이유가 있습니다. 맛있기 때문입니다. 근거 없이 깎아내리지 마세요.
+      </p>
+      <span class="verdict">✅ 샐러드 승</span>
+    </div>
+
+    <div class="card">
+      <span class="emoji-big">🧊</span>
+      <div class="their-claim">❝ 차가운 두부텐더는 위로가 안 됩니다 ❞</div>
+      <h3>아이스크림도 위로가 안 됩니까?</h3>
+      <p>
+        차갑다 = 위로 안 된다 는 <strong>완전히 틀린 등식</strong>입니다.
+        아이스크림, 냉면, 수박, 맥주. 인류가 더위와 스트레스에 맞서 선택한 모든 해답은 차갑습니다.
+        "따뜻해야 위로"라는 건 어디서 나온 말입니까. 출처를 대십시오.
+        두부텐더 샐러드는 쿨하기 때문에 위로가 됩니다. 문자 그대로.
+      </p>
+      <span class="verdict">✅ 샐러드 승</span>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <strong>🏆 최종 스코어: 샐러드 4 - 0 메밀국수</strong>
+    <p>압도적 승리입니다. 이의 있습니까?</p>
+  </div>
+</section>
+
+<!-- TABLE -->
+<section>
+  <h2>정면 승부 (진짜 버전)</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>🥗 두부텐더 샐러드</th>
+          <th>🍜 들기름 메밀국수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>오후 생존율</td>
+          <td class="win">👀 눈 뜨고 있음</td>
+          <td class="lose">😴 책상에서 기절</td>
+        </tr>
+        <tr>
+          <td>칼로리 투명성</td>
+          <td class="win">✅ 드레싱 조절 가능</td>
+          <td class="lose">❓ 들기름 몇 바퀴째?</td>
+        </tr>
+        <tr>
+          <td>먹고 난 기분</td>
+          <td class="win">😎 가볍고 쿨함</td>
+          <td class="lose">🥱 나른하고 기름짐</td>
+        </tr>
+        <tr>
+          <td>단백질</td>
+          <td class="win">💪 두부텐더 든든</td>
+          <td class="lose">🤷 면이 단백질?</td>
+        </tr>
+        <tr>
+          <td>인스타 비주얼</td>
+          <td class="win">📸 색감 미침</td>
+          <td class="lose">🟤 갈색 면 갈색 소스</td>
+        </tr>
+        <tr>
+          <td>위로 여부</td>
+          <td class="win">🧊 쿨한 위로</td>
+          <td class="lose">🛢️ 기름으로 때우는 위로</td>
+        </tr>
+        <tr>
+          <td>총평</td>
+          <td class="win">✨ 오늘의 승자</td>
+          <td class="lose">📜 근거 없는 자신감</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote>
+    "들기름은 오늘도 먹을 수 있고, 내일도 먹을 수 있다.<br/>
+    두부텐더 샐러드는 오늘의 가장 현명한 선택이다."
+    <cite>— 팩트를 진지하게 고민하는 모든 직장인</cite>
+  </blockquote>
+</section>
+
+<!-- FUN FACTS -->
+<section>
+  <h2>저쪽 사이트가 말 안 해준 것들</h2>
+  <div class="fun-facts">
+    <ul>
+      <li>
+        <span class="icon">🍜</span>
+        <span>메밀국수의 "고소함이 코끝으로 퍼진다"는 표현—들기름 냄새가 옷에도 퍼집니다. 오후 미팅 전 생각해보세요.</span>
+      </li>
+      <li>
+        <span class="icon">🥗</span>
+        <span>두부텐더는 <strong>튀긴 두부</strong>입니다. "텐더"라는 이름답게 바삭하고 든든합니다. 진짜 샐러드의 위상을 높인 존재입니다.</span>
+      </li>
+      <li>
+        <span class="icon">📊</span>
+        <span>저쪽 사이트의 비교표에서 샐러드 측 항목을 보셨나요? "먹고도 허전함"이라고 적혀 있습니다. <strong>두부텐더가 들어간 샐러드를 먹어본 적 없는 겁니다.</strong></span>
+      </li>
+      <li>
+        <span class="icon">⏰</span>
+        <span>"오늘의 들기름 메밀국수는 오늘뿐이다"—이 말은 샐러드에도 똑같이 성립합니다. 오늘의 두부텐더 샐러드도 오늘뿐입니다. 논리가 없습니다.</span>
+      </li>
+      <li>
+        <span class="icon">🧠</span>
+        <span>샐러드는 씹는 횟수가 많아 뇌 활성화에 도움이 됩니다. 국수는 슥슥 넘어갑니다. <strong>슥슥 넘어가는 점심은 기억에도 슥슥 사라집니다.</strong></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final">
+  <h2>포크를 들 시간입니다. 🥗</h2>
+  <p>
+    고소함에 속지 마세요.<br/>
+    오늘 점심, 정답은 이미 나왔습니다.
+  </p>
+  <a href="#rebuttal" class="cta">✅ 두부텐더 샐러드 선택하기</a>
+</div>
+
+<footer>
+  이 페이지는 진심으로 두부텐더 샐러드를 지지합니다 🥗<br/>
+  &copy; 2025 두부텐더 샐러드 옹호위원회 | 들기름과는 아무 관계 없음
+</footer>
+
+</body>
+</html>
