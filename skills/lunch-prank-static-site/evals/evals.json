@@ -1,0 +1,38 @@
+{
+  "skill_name": "lunch-prank-static-site",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "회사에서 오늘 점심 메뉴로 마라탕 vs 돈까스 대결 중인데, 돈까스 편을 드라마틱하게 밀어주는 정적 사이트 만들어줘. 팀 채팅에 뿌릴 거라 한 페이지로 요란하고 스크린샷 잘 나오면 좋겠어.",
+      "expected_output": "A single-page static lunch battle site that strongly advocates for tonkatsu with loud visual styling, in-world copy, and no meta narration about technology or humor.",
+      "files": [],
+      "expectations": [
+        "Creates or proposes a single-page static HTML site",
+        "Keeps the copy inside the joke world instead of explaining the joke",
+        "Uses a flashy visual framing suitable for sharing"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "저번에 만든 국밥 옹호 페이지가 좀 약했어. 더 유치하고 더 세게, 근데 버튼은 안 가려지게 다시 만들어줘.",
+      "expected_output": "A revised static page that strengthens the tone, removes weak/meta phrasing, and keeps interactions visible and usable.",
+      "files": [],
+      "expectations": [
+        "Rewrites weak or self-conscious copy into stronger in-world lines",
+        "Mentions or addresses visibility/usability for key controls",
+        "Preserves the playful prank-site format"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "우리 팀이 자주 가는 점심 식당 5개를 가지고 '공식 맛집 리그' 페이지처럼 꾸며줘. 너무 설명조 말고 방송 자막처럼 오버해서 써줘.",
+      "expected_output": "A static ranking page framed like an exaggerated official league or awards show, with punchy copy and decorative presentation.",
+      "files": [],
+      "expectations": [
+        "Frames the page as a themed ranking or verdict experience",
+        "Uses punchy, broadcast-style copy",
+        "Avoids technical or self-referential explanations"
+      ]
+    }
+  ]
+}

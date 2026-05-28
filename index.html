@@ -129,7 +129,11 @@
     .table-wrap,
     .quote-box,
     .evidence,
-    .footer-card {
+    .footer-card,
+    .battle-box,
+    .one-liner-box {
+      position: relative;
+      z-index: 2;
       background: var(--paper);
       backdrop-filter: blur(14px);
       border: 2px solid rgba(255,255,255,0.75);
@@ -670,7 +674,7 @@
       inset: 0;
       pointer-events: none;
       overflow: hidden;
-      z-index: 15;
+      z-index: 1;
     }
     .emoji {
       position: absolute;
@@ -738,12 +742,12 @@
 
   <div class="marquee">
     <div class="marquee-track">
-      <span>🚨 긴급 속보: 들기름 메밀국수 측 주장, 오늘도 고소함에만 의존 🚨</span>
-      <span>🥗 두부텐더 샐러드 측 입장: 웃기고도 논리적인 반박 제출 완료 🥗</span>
-      <span>📎 원문 링크 열람 가능 · 기름보다 단백질이 말이 많음 · 오늘의 판결은 이미 나옴 📎</span>
-      <span>🚨 긴급 속보: 들기름 메밀국수 측 주장, 오늘도 고소함에만 의존 🚨</span>
-      <span>🥗 두부텐더 샐러드 측 입장: 웃기고도 논리적인 반박 제출 완료 🥗</span>
-      <span>📎 원문 링크 열람 가능 · 기름보다 단백질이 말이 많음 · 오늘의 판결은 이미 나옴 📎</span>
+      <span>🚨 긴급 속보: 들기름이 한 바퀴 돌 때 포크는 이미 두 번 움직였습니다 🚨</span>
+      <span>🥗 속보: 샐러드 그릇에서 바삭한 소리가 나자 주변 직장인들 고개를 들었습니다 🥗</span>
+      <span>🍜 제보: 메밀국수 측은 오늘도 고소함으로 모든 질문에 답하려 했습니다 🍜</span>
+      <span>🚨 긴급 속보: 들기름이 한 바퀴 돌 때 포크는 이미 두 번 움직였습니다 🚨</span>
+      <span>🥗 속보: 샐러드 그릇에서 바삭한 소리가 나자 주변 직장인들 고개를 들었습니다 🥗</span>
+      <span>🍜 제보: 메밀국수 측은 오늘도 고소함으로 모든 질문에 답하려 했습니다 🍜</span>
     </div>
   </div>
 
@@ -753,9 +757,9 @@
     <div class="shell hero-inner">
       <section class="glass reveal">
         <div class="eyebrow-row">
-          <div class="badge pink">💥 반박 강도 상향</div>
-          <div class="badge green">🥗 샐러드 측 최종 입장</div>
-          <div class="badge yellow">🧾 원문 검토 완료</div>
+          <div class="badge pink">💥 포크 비상</div>
+          <div class="badge green">🥗 샐러드 선두</div>
+          <div class="badge yellow">🍽️ 점심 회의록</div>
         </div>
 
         <h1>
@@ -767,7 +771,7 @@
         <p class="hero-copy">
           원문은 고소함을 근거처럼 말하지만, 사실은 <strong>기름이 열심히 일한 것</strong>에 가깝습니다.
           반면 두부텐더 샐러드는 바삭함, 단백질, 비주얼, 오후 생존력까지 챙깁니다.
-          결론은 간단합니다. <strong>오늘 점심 토론, 샐러드 측이 더 웃기고 더 설득력 있습니다.</strong>
+          결론은 간단합니다. <strong>오늘 점심 토론, 샐러드 쪽이 더 그럴듯합니다.</strong>
         </p>
 
         <div class="cta-row">
@@ -784,17 +788,17 @@
         <h2>오늘의 판정 위원회</h2>
         <div class="meter"><span id="truthMeter"></span></div>
         <div class="meter-row">
-          <span>근거 부족</span>
-          <span>말맛 과다</span>
+          <span>흔들림</span>
+          <span>확신</span>
         </div>
 
         <div class="judge-card">
           <div class="judge-mini">
-            <strong>판결 요약</strong>
+            <strong>한 줄 판결</strong>
             들기름 메밀국수는 고소하지만, 고소하다고 다 이기는 건 아닙니다.
           </div>
           <div class="judge-mini">
-            <strong>핵심 멘트</strong>
+            <strong>오늘의 문장</strong>
             <span class="line-mark">위로는 온도가 아니라 만족도에서 온다.</span>
           </div>
         </div>
@@ -802,15 +806,15 @@
         <div class="count-wrap">
           <div class="count-box">
             <b data-count="4">0</b>
-            <span>반박 포인트</span>
+            <span>한입 역전</span>
           </div>
           <div class="count-box">
             <b data-count="87">0</b>
-            <span>드립 체감치</span>
+            <span>포크 자신감</span>
           </div>
           <div class="count-box">
             <b data-count="100">0</b>
-            <span>샐러드 지지율</span>
+            <span>점심 확신도</span>
           </div>
         </div>
       </aside>
@@ -820,23 +824,23 @@
   <main class="shell">
     <section class="reveal">
       <div class="section-head">
-        <h2>증거 자료</h2>
-        <p>말만 세게 하는 페이지가 아니라, 원문 링크까지 걸어둔 페이지입니다.</p>
+        <h2>맞다이 입장권</h2>
+        <p>궁금하면 저쪽도 보고 오세요. 그래도 포크는 이쪽으로 돌아옵니다.</p>
       </div>
 
       <div class="evidence">
         <div class="evidence-grid">
           <a href="https://genuine-palmier-571b8e.netlify.app/" target="_blank" rel="noopener noreferrer">
-            <span>원문 링크</span>
-            <strong>상대 측 주장 직접 보기</strong>
+            <span>상대편 구경</span>
+            <strong>메밀국수 측 입장 보기</strong>
           </a>
           <a href="#rebuttal">
-            <span>핵심 반박</span>
-            <strong>웃기면서도 논리 챙긴 문장 보기</strong>
+            <span>핵심 문장</span>
+            <strong>샐러드 측 반격 보기</strong>
           </a>
           <a href="#decision">
-            <span>최종 판정</span>
-            <strong>오늘 점심의 사실상 결론 보기</strong>
+            <span>마지막 판결</span>
+            <strong>오늘 점심 결론 보기</strong>
           </a>
         </div>
       </div>
@@ -845,7 +849,7 @@
     <section id="rebuttal">
       <div class="section-head reveal">
         <h2>주장 4개, 반박 4개</h2>
-        <p>이번엔 약점 자폭 없이, 상대 논리만 정확히 찌릅니다.</p>
+        <p>고소함도 인정하고, 그 이상은 포크로 정리합니다.</p>
       </div>
 
       <div class="card-grid">
@@ -858,7 +862,7 @@
             <span class="line-mark">“들기름은 향을 얹지만, 두부텐더는 식감과 단백질을 같이 얹습니다.”</span>
             이건 상대를 놀리면서도 우리 메뉴의 장점을 남깁니다.
           </p>
-          <div class="verdict">✅ 반박은 공격적으로, 자해는 없이</div>
+          <div class="verdict">✅ 포크 쪽 전략 수정 완료</div>
         </article>
 
         <article class="card ice reveal">
@@ -870,7 +874,7 @@
             <span class="line-mark">“차가워도 위로는 됩니다. 중요한 건 온도가 아니라 한 입 뒤의 납득입니다.”</span>
             듣자마자 고개 끄덕여지는 쪽이 이긴 겁니다.
           </p>
-          <div class="verdict">✅ 아이스크림 비유보다 더 정교함</div>
+          <div class="verdict">✅ 차가움 누명 해제</div>
         </article>
 
         <article class="card popcorn reveal">
@@ -882,7 +886,7 @@
             <span class="line-mark">건강식 발표회에 나온 광고 카피</span>처럼 들립니다.
             샐러드는 적어도 바삭함, 색감, 단백질이라는 실물이 있습니다.
           </p>
-          <div class="verdict">✅ 기름은 기름대로, 샐러드는 샐러드대로 평가합시다</div>
+          <div class="verdict">✅ 들기름 단독 캐리 인정 불가</div>
         </article>
 
         <article class="card pink reveal">
@@ -894,20 +898,20 @@
             <span class="line-mark">차갑다고 허전한 게 아니라, 허전한 메뉴가 허전한 겁니다.</span>
             두부텐더가 들어가면 이야기가 달라집니다.
           </p>
-          <div class="verdict">✅ 웃기고, 세고, 기억에도 남음</div>
+          <div class="verdict">✅ 오늘의 결정타</div>
         </article>
       </div>
 
       <div class="shout reveal">
         <strong>최종 스코어: 샐러드 4 - 0 메밀국수</strong>
-        반박문 작성자 의견이 아니라, 오늘 페이지의 전체 분위기가 이미 그렇게 말하고 있습니다.
+        사내 공용 냉장고 앞 여론조사 기준으로도 대체로 이런 분위기입니다.
       </div>
     </section>
 
     <section>
       <div class="section-head reveal">
         <h2>정면 승부 표</h2>
-        <p>오늘의 판정은 감정이 아니라 매우 객관적인 척하는 표로 진행됩니다.</p>
+        <p>표가 들어가면 괜히 더 믿음직해 보이는 법입니다.</p>
       </div>
 
       <div class="table-wrap reveal">
@@ -943,7 +947,7 @@
             <tr>
               <td>종합 코멘트</td>
               <td class="win">오늘의 유죄 없는 승자</td>
-              <td class="lose">억울하면 링크 열어보세요</td>
+              <td class="lose">먹기 전보다 말이 많아짐</td>
             </tr>
           </tbody>
         </table>
@@ -958,14 +962,14 @@
     <section>
       <div class="section-head reveal">
         <h2>현장 판결 체험</h2>
-        <p>버튼을 눌러도 결론은 크게 달라지지 않습니다. 그게 이 코너의 핵심입니다.</p>
+        <p>마음은 자유롭지만 결과창은 다소 단호합니다.</p>
       </div>
 
       <div class="mini-stage">
         <div class="battle-box reveal">
           <h3>오늘의 선택지</h3>
           <p>
-            솔직히 선택은 자유입니다. 다만 이 페이지는 그 자유를 매우 적극적으로 한 방향으로 유도합니다.
+            솔직히 선택은 자유입니다. 다만 오늘 분위기는 한 방향으로 제법 기울어 있습니다.
           </p>
           <div class="battle-choice">
             <button class="choice" data-choice="salad" type="button">🥗 샐러드 쪽 들어보기</button>
@@ -973,7 +977,7 @@
             <button class="choice" data-choice="truth" type="button">⚖️ 팩트만 보기</button>
           </div>
           <div class="result-box" id="resultBox">
-            버튼을 누르세요. 다만 결과는 이미 살짝 정해져 있습니다.
+            버튼을 누르세요. 결과는 생각보다 빠르게 포크 쪽으로 기웁니다.
           </div>
         </div>
 
@@ -992,7 +996,7 @@
     <section class="final" id="decision">
       <div class="footer-card reveal">
         <div class="stamp">공식 판결 완료</div>
-        <h2>오늘 점심, 웃음과 논리 모두<br />두부텐더 샐러드 승</h2>
+        <h2>오늘 점심,<br />두부텐더 샐러드 승</h2>
         <p>
           원문을 보고 와도, 반박문을 먼저 읽어도, 결국 남는 건 같은 결론입니다.
           고소함은 인정. 하지만 오늘의 주인공은 두부텐더 샐러드입니다.
@@ -1005,9 +1009,7 @@
     </section>
   </main>
 
-  <footer>
-    이 페이지는 두부텐더 샐러드의 명예와 웃음을 위해 제작되었습니다.
-  </footer>
+  <footer></footer>
 
   <script>
     const progressBar = document.getElementById("progressBar");
@@ -1085,14 +1087,14 @@
       button.addEventListener("click", () => {
         const choice = button.dataset.choice;
         if (choice === "salad") {
-          resultBox.textContent = "현명한 선택입니다. 포크를 든 순간부터 이미 토론은 끝났습니다. 바삭함, 단백질, 비주얼까지 모두 챙겼습니다.";
+          resultBox.textContent = "좋습니다. 포크를 든 순간부터 상황은 꽤 많이 정리됩니다. 바삭함, 단백질, 색감까지 한 번에 들어옵니다.";
           truthMeter.style.width = "100%";
           burst(12);
         } else if (choice === "noodle") {
-          resultBox.textContent = "의견은 존중합니다. 다만 현재 페이지 전체가 그 선택을 다소 안타까워하고 있습니다. 고소함 하나로 변호하기엔 오늘 반박문이 너무 강합니다.";
+          resultBox.textContent = "그 선택도 존중합니다. 다만 지금 분위기는 '고소함은 좋지만 오늘은 포크 쪽'에 조금 더 가깝습니다.";
           truthMeter.style.width = "74%";
         } else {
-          resultBox.textContent = "팩트만 보면 이렇습니다. 차가움은 결격 사유가 아니고, 고소함은 모든 논리를 대체하지 못합니다. 그래서 두부텐더 샐러드 쪽 문장이 더 오래 남습니다.";
+          resultBox.textContent = "정리하면 이렇습니다. 차가움은 결격 사유가 아니고, 고소함은 모든 설명을 대신하지 못합니다. 그래서 오늘은 샐러드가 앞섭니다.";
           truthMeter.style.width = "92%";
         }
       });
