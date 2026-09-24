@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f2">
+  <meta name="description" content="2026년 10월, 도쿄의 예술과 건축, 골목과 풍경을 따라 걷는 7일간의 여행 노트.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.wikimedia.org https://tile.openstreetmap.org; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>도쿄, 10월의 기록 — Tokyo in October</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23f7f6f2'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23c44430'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+  <header class="site-header">
+    <a class="brand" href="#/" aria-label="Tokyo in October 홈"><span class="brand-symbol">東</span><span>TOKYO<span class="brand-sub">A PERSONAL TRAVEL JOURNAL</span></span></a>
+    <nav class="primary-nav" aria-label="주 메뉴">
+      <a href="#/" data-nav="home">여행 개요</a><a href="#/days/2026-10-01" data-nav="days">일자별 일정</a><a href="#/places" data-nav="places">먹고, 둘러보기</a><a href="#/checklist" data-nav="checklist">여행 준비</a>
+    </nav>
+    <button class="privacy-toggle" id="privacy-toggle" role="switch" aria-checked="false" aria-label="비공개 정보 표시"><span class="lock-symbol" aria-hidden="true">⌑</span><span class="toggle-text">비공개 정보</span><span class="switch-track" aria-hidden="true"><span></span></span></button>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <footer class="site-footer"><a class="footer-brand" href="#/">TOKYO, OCTOBER.</a><span>조금 걷고, 오래 기억하기.</span><a href="#/credits">사진·정보 출처 ↗</a><span class="footer-year">2026 · JAPAN</span></footer>
+  <dialog id="unlock-dialog" aria-labelledby="unlock-title" aria-describedby="unlock-description">
+    <button type="button" class="dialog-close" id="dialog-close" aria-label="닫기">×</button>
+    <span class="eyebrow">JUST BETWEEN US</span><h2 id="unlock-title">우리만의 여행 정보</h2>
+    <p id="unlock-description">비밀번호를 입력하면 상세 시간과 예약 정보를 함께 볼 수 있어요. 새로고침하거나 표시를 끄면 다시 잠깁니다.</p>
+    <form id="unlock-form"><label for="password">여행 비밀번호</label><div class="password-row"><input id="password" type="password" autocomplete="off" spellcheck="false" required aria-describedby="unlock-error"><button type="submit" class="button dark" id="unlock-submit">표시하기 <span>↗</span></button></div><p id="unlock-error" role="alert"></p></form>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/src/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Encrypt locally before committing updated private.enc.json.
+# Netlify needs neither the plaintext nor an encryption password.
