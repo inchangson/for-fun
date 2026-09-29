@@ -12,14 +12,14 @@ async function openPrivate(page){await page.getByRole('switch').click();await pa
 test('separate pages, history, catalog filters, checklist persistence and no horizontal overflow',async({page})=>{
  const errors=[];page.on('pageerror',err=>errors.push(err.message));
  await page.goto('/');await page.locator('.skip-link').focus();await page.keyboard.press('Enter');await expect(page.locator('#main')).toBeFocused();await expect(page.locator('h1')).toContainText('10월의 기록');await expect(page.locator('.day-card')).toHaveCount(7);
- await page.locator('.day-card').nth(1).click();await expect(page.locator('h1')).toContainText(trip.days[1].title);await expect(page.locator('.stop-card')).toHaveCount(5);
+ await page.locator('.day-card').nth(1).click();await expect(page.locator('h1')).toContainText(trip.days[1].title);await expect(page.locator('.stop-card')).toHaveCount(trip.days[1].stops.length);
  await page.reload();await expect(page.locator('h1')).toContainText(trip.days[1].title);
- await page.locator('.primary-nav').getByRole('link',{name:'먹고, 둘러보기'}).click();await expect(page.locator('.restaurant-card')).toHaveCount(21);
- await page.getByRole('button',{name:'긴자',exact:true}).click();await expect(page.locator('.restaurant-card')).toHaveCount(2);
+ await page.locator('.primary-nav').getByRole('link',{name:'먹고, 둘러보기'}).click();await expect(page.locator('.place-directory-card')).toHaveCount(trip.days.reduce((n,d)=>n+d.stops.length+d.alternatives.length,0));
+ await page.getByRole('searchbox').fill('긴자');await expect(page.locator('.place-directory-card')).not.toHaveCount(0);
  await page.getByRole('searchbox').fill('no-such-place');await expect(page.locator('.empty-state')).toBeVisible();
  await page.goto('/#/checklist');const first=page.locator('[data-check]').first();await first.check();await page.reload();await expect(first).toBeChecked();
  await page.getByRole('button',{name:'체크 초기화'}).click();await expect(first).not.toBeChecked();
- for(const width of [1440,768,390,320]){await page.setViewportSize({width,height:900});for(const route of ['/', '/days/2026-10-02','/places','/checklist','/credits']){await page.goto('/#'+route);await expect(page.locator('h1')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);}}
+ for(const width of [1440,768,390,320]){await page.setViewportSize({width,height:900});for(const route of ['/', '/days/2026-10-02','/places','/nearby/odaiba','/nearby/nezu','/original-foods','/checklist','/credits']){await page.goto('/#'+route);await expect(page.locator('h1')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);}}
  expect(errors).toEqual([]);
 });
 
@@ -50,13 +50,13 @@ test('all seven dates, public map markers, fallback links, unknown page, keyboar
 
 test('unavailable photos and tiles leave usable public content',async({page})=>{
  await page.route('https://*.wikimedia.org/**',r=>r.abort());await page.route('https://tile.openstreetmap.org/**',r=>r.abort());
- await page.goto('/#/days/2026-10-02');await expect(page.locator('.photo-fallback')).toBeVisible();await expect(page.locator('.map-fallback-links a')).toHaveCount(5);await expect(page.locator('.stop-card')).toHaveCount(5);
+ await page.goto('/#/days/2026-10-02');await expect(page.locator('.photo-fallback')).toBeVisible();await expect(page.locator('.map-fallback-links a')).toHaveCount(trip.days[1].stops.length);await expect(page.locator('.stop-card')).toHaveCount(trip.days[1].stops.length);
 });
 
 test('production assets support static subpath hosting and contain no private source routes',async({page})=>{
  const server=createServer(async(req,res)=>{try{const requested=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(!requested.startsWith('/for-fun/')){res.writeHead(404).end();return;}const relative=requested.slice('/for-fun/'.length)||'index.html';const file=path.resolve('dist',relative);if(!file.startsWith(path.resolve('dist')+path.sep)){res.writeHead(403).end();return;}const content=await readFile(file);const ext=path.extname(file);res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json'})[ext]||'application/octet-stream');res.end(content);}catch{res.writeHead(404).end();}});
  await new Promise(resolve=>server.listen(4175,'127.0.0.1',resolve));
- try{await page.goto('http://127.0.0.1:4175/for-fun/#/days/2026-10-03');await expect(page.locator('h1')).toHaveText(trip.days[2].title);await expect(page.locator('.map-marker')).toHaveCount(5);const response=await page.request.get('http://127.0.0.1:4175/for-fun/.private/details.json');expect(response.status()).toBe(404);await openPrivate(page);await expect(page.getByRole('switch')).toHaveAttribute('aria-checked','true');}finally{await new Promise(resolve=>server.close(resolve));}
+ try{await page.goto('http://127.0.0.1:4175/for-fun/#/days/2026-10-03');await expect(page.locator('h1')).toHaveText(trip.days[2].title);await expect(page.locator('.map-marker')).toHaveCount(trip.days[2].stops.length);await page.goto('http://127.0.0.1:4175/for-fun/#/nearby/odaiba');await expect(page.locator('.restaurant-card')).toHaveCount(10);await expect(page.locator('.map-marker')).toHaveCount(11);const response=await page.request.get('http://127.0.0.1:4175/for-fun/.private/details.json');expect(response.status()).toBe(404);await openPrivate(page);await expect(page.getByRole('switch')).toHaveAttribute('aria-checked','true');}finally{await new Promise(resolve=>server.close(resolve));}
 });
 
 test('capture locked desktop and mobile layout for visual review',async({page})=>{
@@ -76,4 +76,35 @@ test('development server does not expose private source files',async({page})=>{
    const body=await response.text();expect(body.includes(marker)||body.includes(password)).toBe(false);
   }
  }finally{await server.close();}
+});
+
+
+test('all nearby pages render six restaurants, four cafes, exact map destinations and no duplicate cards',async({page})=>{
+ test.setTimeout(90000);
+ for(const id of Object.keys(trip.places)){
+  await page.goto('/#/nearby/'+id);
+  await expect(page.locator('h1')).toHaveText(trip.places[id].name);
+  await expect(page.locator('[data-food-type=restaurant] .restaurant-card')).toHaveCount(6);
+  await expect(page.locator('[data-food-type=cafe] .restaurant-card')).toHaveCount(4);
+  await expect(page.locator('.map-marker')).toHaveCount(11);
+  const ids=await page.locator('[data-food]').evaluateAll(els=>els.map(e=>e.dataset.food));
+  expect(new Set(ids).size).toBe(10);
+  expect(ids).toEqual(trip.nearby[id]);
+  const food=trip.foods.find(f=>f.id===ids[0]);
+  await page.locator('[data-food-focus]').first().click();
+  await expect(page.locator('.leaflet-popup')).toContainText(food.name);
+  await expect(page.locator('.leaflet-popup-content a')).toHaveAttribute('href',food.map);
+ }
+});
+
+test('day cards expose all nearby candidates and preserve private state across the new routes',async({page})=>{
+ await page.goto('/#/days/2026-10-02');
+ const stop=page.locator('.stop-card').first();
+ await stop.locator('summary').click();await expect(stop.locator('.stop-foods li')).toHaveCount(10);
+ await openPrivate(page);
+ await stop.getByRole('link',{name:/주변 식당/}).click();
+ await expect(page.locator('.restaurant-card')).toHaveCount(10);
+ await expect(page.getByRole('switch')).toHaveAttribute('aria-checked','true');
+ await page.goBack();await expect(page.locator('.private-content')).not.toHaveCount(0);
+ await page.reload();await expect(page.locator('.private-content')).toHaveCount(0);
 });
