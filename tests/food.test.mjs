@@ -6,7 +6,7 @@ import {safeURL,decrypt} from '../site/src/crypto.js';
 const trip=JSON.parse(await readFile('site/src/trip.json','utf8'));
 
 test('current itinerary follows the itinerary sheet, preserving alternative destinations separately',()=>{
- const expected=[[],['nezu','watarium','spiral','lv','omotesando','daikanyama','shibuya'],['mot','ginza','sony','seiko','ginza-six','ginza-place','artizon','shinjuku'],['palace','tokyo-station','forum','kitte','azabudai','borderless','odaiba'],['design','midtown','nact','ebisu','brewery'],['ueno','western','tnm','asakusa'],['garden']];
+ const expected=[[],['nezu','watarium','spiral','omotesando','daikanyama','shibuya'],['mot','ginza','sony','ginza-six','ginza-place','artizon','shinjuku'],['palace','tokyo-station','forum','kitte','azabudai','borderless','odaiba'],['design','nact','takanawa','ebisu','brewery'],['western','ueno','tnm','asakusa'],['garden']];
  assert.deepEqual(trip.days.map(d=>d.stops.map(s=>s.place)),expected);
  const retained=new Set(trip.days.flatMap(d=>[...d.stops.map(s=>s.place),...d.alternatives]));
  for(const id of Object.keys(trip.places))assert.ok(retained.has(id),`Unreachable destination ${id}`);
@@ -16,6 +16,9 @@ test('every main and alternative destination has six restaurants and four cafes 
  assert.equal(new Set(trip.foods.map(f=>f.id)).size,trip.foods.length);
  for(const id of Object.keys(trip.places)){
   const foods=nearbyFoods(trip,id);
+  if(trip.places[id].nearbyStatus==='official-directory') {
+   assert.ok(safeURL(trip.places[id].foodDirectory));assert.equal(foods.length,0);continue;
+  }
   assert.equal(foods.length,10,id);assert.equal(new Set(foods.map(f=>f.id)).size,10,id);
   assert.equal(foods.filter(f=>f.type==='restaurant').length,6,id);
   assert.equal(foods.filter(f=>f.type==='cafe').length,4,id);

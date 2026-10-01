@@ -15,6 +15,11 @@ for(const f of trip.foods){assert.ok(safeURL(f.map));if(f.website)assert.ok(safe
 assert.equal(new Set(trip.foods.map(f=>f.id)).size,trip.foods.length,'Duplicate food place IDs');
 for(const id of Object.keys(trip.places)){
  const foods=nearbyFoods(trip,id);
+ if(trip.places[id].nearbyStatus==='official-directory') {
+  assert.ok(safeURL(trip.places[id].foodDirectory));
+  assert.equal(foods.length,0,'Official directory must not imply researched ratings');
+  continue;
+ }
  assert.equal(foods.filter(f=>f.type==='restaurant').length,6,`Six restaurants required for ${id}`);
  assert.equal(foods.filter(f=>f.type==='cafe').length,4,`Four cafes required for ${id}`);
  assert.equal(new Set(foods.map(f=>f.id)).size,10,`Duplicate candidates for ${id}`);

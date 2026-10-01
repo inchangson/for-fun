@@ -84,6 +84,12 @@ test('all nearby pages render six restaurants, four cafes, exact map destination
  for(const id of Object.keys(trip.places)){
   await page.goto('/#/nearby/'+id);
   await expect(page.locator('h1')).toHaveText(trip.places[id].name);
+  if(trip.places[id].nearbyStatus==='official-directory') {
+   await expect(page.getByRole('link',{name:'식당·카페 공식 안내',exact:true})).toHaveAttribute('href',trip.places[id].foodDirectory);
+   await expect(page.locator('.map-marker')).toHaveCount(1);
+   await expect(page.locator('.restaurant-card')).toHaveCount(0);
+   continue;
+  }
   await expect(page.locator('[data-food-type=restaurant] .restaurant-card')).toHaveCount(6);
   await expect(page.locator('[data-food-type=cafe] .restaurant-card')).toHaveCount(4);
   await expect(page.locator('.map-marker')).toHaveCount(11);

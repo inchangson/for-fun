@@ -1,7 +1,7 @@
 {
   "title": "TOKYO, OCTOBER",
   "dates": "2026.10.01 — 10.07",
-  "checkedAt": "2026-09-29",
+  "checkedAt": "2026-10-01",
   "days": [
     {
       "number": 1,
@@ -15,7 +15,7 @@
       "stops": [],
       "alternatives": [],
       "foodAreas": [],
-      "note": "이동과 체크인 위주로 여유를 남깁니다.",
+      "note": "최종 일정 엑셀의 방문 순서를 반영했습니다. 상세 시간·이동·예약 및 식사 메모는 비공개 정보에서 확인하세요. 주변 식당·카페 목록은 별도의 선택 후보입니다.",
       "privateRef": "3131cde1086c4b369c98afb130eec7b0",
       "arrivalRefs": [
         "e1de1673bfc64549bc150143cefa6fd9",
@@ -46,10 +46,6 @@
           "privateRef": "2a911b09b79010b982cbde91a825233d"
         },
         {
-          "place": "lv",
-          "privateRef": "84ebdba35b80c3dc58183769b151b0fa"
-        },
-        {
           "place": "omotesando",
           "privateRef": "e2275b26104eb1c93059d659eae9ed13"
         },
@@ -63,10 +59,11 @@
         }
       ],
       "alternatives": [
-        "nakameguro"
+        "nakameguro",
+        "lv"
       ],
       "foodAreas": [],
-      "note": "최신 일정 시트의 장소 구성을 반영했습니다. 식당·카페는 선택 후보이며, 상세 시간과 예약 관련 기록은 비공개 정보에서 확인하세요.",
+      "note": "최종 일정 엑셀의 방문 순서를 반영했습니다. 상세 시간·이동·예약 및 식사 메모는 비공개 정보에서 확인하세요. 주변 식당·카페 목록은 별도의 선택 후보입니다.",
       "privateRef": "9e21865ca4c04d788ada8ac010779702"
     },
     {
@@ -92,10 +89,6 @@
           "privateRef": "6b7d2a8388bab29d8f110c93ea085473"
         },
         {
-          "place": "seiko",
-          "privateRef": "f581642890f0f98c0c9766a5e59ecdde"
-        },
-        {
           "place": "ginza-six",
           "privateRef": "e99781a9cf8a81b2236ae27a26bb9e70"
         },
@@ -115,10 +108,11 @@
       "alternatives": [
         "gyoen",
         "nikon",
-        "ikebukuro"
+        "ikebukuro",
+        "seiko"
       ],
       "foodAreas": [],
-      "note": "최신 일정 시트의 장소 구성을 반영했습니다. 식당·카페는 선택 후보이며, 상세 시간과 예약 관련 기록은 비공개 정보에서 확인하세요.",
+      "note": "최종 일정 엑셀의 방문 순서를 반영했습니다. 상세 시간·이동·예약 및 식사 메모는 비공개 정보에서 확인하세요. 주변 식당·카페 목록은 별도의 선택 후보입니다.",
       "privateRef": "49c2a8ec8e86408090c9d3882e080336"
     },
     {
@@ -165,17 +159,17 @@
         "tsukiji"
       ],
       "foodAreas": [],
-      "note": "최신 일정 시트의 장소 구성을 반영했습니다. 식당·카페는 선택 후보이며, 상세 시간과 예약 관련 기록은 비공개 정보에서 확인하세요.",
+      "note": "최종 일정 엑셀의 방문 순서를 반영했습니다. 상세 시간·이동·예약 및 식사 메모는 비공개 정보에서 확인하세요. 주변 식당·카페 목록은 별도의 선택 후보입니다.",
       "privateRef": "ee55b5d1c4dc4534a73141e8e51dcca3"
     },
     {
       "number": 5,
       "date": "2026-10-05",
       "weekday": "월",
-      "title": "롯본기의 예술, 에비스의 저녁",
+      "title": "롯본기에서 다카나와, 에비스로",
       "kicker": "ART, WALKS & LITTLE DISCOVERIES",
-      "area": "롯본기 · 미드타운 · 에비스",
-      "description": "디자인과 미술을 보고 에비스의 맥주와 전망을 만나는 하루.",
+      "area": "롯본기 · 다카나와 · 에비스",
+      "description": "디자인과 미술을 보고, 다카나와의 도시 공간을 지나 에비스로.",
       "photo": "roppongi",
       "stops": [
         {
@@ -183,12 +177,12 @@
           "privateRef": "6333d2d6ddde2bd648bea7c3a1e5590c"
         },
         {
-          "place": "midtown",
-          "privateRef": "448494ddf7bce342e24a796b2358db2b"
-        },
-        {
           "place": "nact",
           "privateRef": "8c17da72e789e559978df9956d94ed65"
+        },
+        {
+          "place": "takanawa",
+          "privateRef": "2c14342ccf07396556a4c01b4ca03faa"
         },
         {
           "place": "ebisu",
@@ -201,10 +195,11 @@
       ],
       "alternatives": [
         "roppongi",
-        "mori"
+        "mori",
+        "midtown"
       ],
       "foodAreas": [],
-      "note": "최신 일정 시트의 장소 구성을 반영했습니다. 식당·카페는 선택 후보이며, 상세 시간과 예약 관련 기록은 비공개 정보에서 확인하세요.",
+      "note": "최종 일정 엑셀의 방문 순서를 반영했습니다. 상세 시간·이동·예약 및 식사 메모는 비공개 정보에서 확인하세요. 주변 식당·카페 목록은 별도의 선택 후보입니다.",
       "privateRef": "abb07e2815ae43e3bb6ef5429a3b6c89"
     },
     {
@@ -218,12 +213,12 @@
       "photo": "ueno",
       "stops": [
         {
-          "place": "ueno",
-          "privateRef": "03f3bd6ff16f2ee512c9d79f8ed587b3"
-        },
-        {
           "place": "western",
           "privateRef": "232f9cca6bd2bb2ccf1ba4ae342cac53"
+        },
+        {
+          "place": "ueno",
+          "privateRef": "03f3bd6ff16f2ee512c9d79f8ed587b3"
         },
         {
           "place": "tnm",
@@ -239,7 +234,7 @@
         "ryogoku"
       ],
       "foodAreas": [],
-      "note": "최신 일정 시트의 장소 구성을 반영했습니다. 식당·카페는 선택 후보이며, 상세 시간과 예약 관련 기록은 비공개 정보에서 확인하세요.",
+      "note": "최종 일정 엑셀의 방문 순서를 반영했습니다. 상세 시간·이동·예약 및 식사 메모는 비공개 정보에서 확인하세요. 주변 식당·카페 목록은 별도의 선택 후보입니다.",
       "privateRef": "bd5965ad71744b04992630ecbe877477"
     },
     {
@@ -259,7 +254,7 @@
       ],
       "alternatives": [],
       "foodAreas": [],
-      "note": "정원 개장 09:00 이후 관람 가능. 공항 이동에 여유가 없으면 산책을 생략하세요.",
+      "note": "출국 준비와 공항 이동을 우선합니다. 정원 관람 여부와 상세 일정은 비공개 메모를 확인하세요.",
       "privateRef": "7a7b9de8ff594eb48da7ffab55661bd5",
       "departureRef": "373af3d5758a498c81528e12be3a7338"
     }
@@ -684,6 +679,18 @@
       "category": "DESIGN",
       "description": "긴자 교차로에서 만나는 전시·브랜드 쇼룸 공간. 층별 안내를 확인해요.",
       "source": null
+    },
+    "takanawa": {
+      "id": "takanawa",
+      "name": "다카나와 게이트웨이 시티",
+      "query": "TAKANAWA GATEWAY CITY",
+      "lat": 35.6355,
+      "lng": 139.7407,
+      "category": "ARCHITECTURE",
+      "description": "다카나와 게이트웨이역과 이어지는 도시 공간. NEWoMan의 상점과 식당, 광장을 둘러봅니다.",
+      "source": "takanawa",
+      "foodDirectory": "https://www.takanawagateway-city.com/ko/",
+      "nearbyStatus": "official-directory"
     }
   },
   "foods": [
@@ -5031,10 +5038,17 @@
       "note": "공식 페이지 접근 제한으로 여행일 전시·운영시간 재확인 필요",
       "checked": false,
       "checkedAt": "2026-09-29"
+    },
+    "takanawa": {
+      "title": "다카나와 게이트웨이 시티 공식 안내",
+      "url": "https://www.takanawagateway-city.com/ko/information/",
+      "note": "상점·식당과 시설별 운영시간은 공식 안내에서 확인하세요.",
+      "checked": true,
+      "checkedAt": "2026-10-01"
     }
   },
   "privateRef": "1d6faaa03a6948d8bca3c5469b6fe563",
-  "scheduleSource": "tokyo_final.xlsx · 일정 시트 (Check 시트 제외)",
+  "scheduleSource": "tokyo_2026_oct_01_oct_07_final_final.xlsx · 일정 시트 (Check 시트 일정 제외)",
   "nearby": {
     "nezu": [
       "g-ChIJV7oGAWWLGGARslO9OGTuG-A",
@@ -5539,7 +5553,8 @@
       "g-ChIJjdNZ1uWLGGARrRWTL70PKTw",
       "g-ChIJo_1xReaLGGAR6Yv1OW2Gn4o",
       "g-ChIJW4Hi46OLGGARZVuuNeN6hxs"
-    ]
+    ],
+    "takanawa": []
   },
   "foodArchive": [
     {
