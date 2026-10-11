@@ -16,7 +16,7 @@ if(process.argv[1]===new URL(import.meta.url).pathname){
   }
   try {
     const details=JSON.parse(await readFile('.private/details.json','utf8'));
-    function collect(value){if(typeof value==='string' && value.length>=4)forbidden.push(value);else if(Array.isArray(value))value.forEach(collect);else if(value && typeof value==='object')Object.entries(value).filter(([key])=>key!=='id').forEach(([,v])=>collect(v));}
+    function collect(value){if(typeof value==='string' && value.length>=4)forbidden.push(value);else if(Array.isArray(value))value.forEach(collect);else if(value && typeof value==='object')Object.entries(value).filter(([key])=>!['id','layout'].includes(key)).forEach(([,v])=>collect(v));}
     collect(details);
   } catch(err) { if(err.code!=='ENOENT')throw err; }
   const count=await audit('dist',forbidden);

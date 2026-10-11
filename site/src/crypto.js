@@ -27,11 +27,22 @@ export function validPrivateData(data) {
   const text = x => typeof x === 'string';
   const list = (x, check) => Array.isArray(x) && x.every(check);
   const link = x => x && text(x.label) && !!safeURL(x.url);
-  const item = x => x && text(x.eyebrow) && text(x.title) && list(x.lines, text) && list(x.links, link);
+  const opaque = x => typeof x === 'string' && /^[a-f0-9]{32}$/.test(x);
+  const item = x => x && text(x.eyebrow) && text(x.title) && list(x.lines, text) && list(x.links, link) &&
+    (x.id === undefined || opaque(x.id)) && (x.rating === undefined || Number.isInteger(x.rating) && x.rating >= 0 && x.rating <= 3) &&
+    (x.meta === undefined || text(x.meta)) && (x.time === undefined || text(x.time)) &&
+    (x.refs === undefined || list(x.refs, r => r && opaque(r.target) && text(r.label)));
   const section = x => x && text(x.title) && text(x.body) && list(x.items, item);
-  const page = x => x && /^[a-f0-9]{32}$/.test(x.id) && text(x.label) && text(x.kicker) && text(x.title) && text(x.intro) && list(x.sections, section);
-  return !!data && data.version === 1 && text(data.title) && text(data.subtitle) &&
+  const page = x => x && opaque(x.id) && text(x.label) && text(x.kicker) && text(x.title) && text(x.intro) && list(x.sections, section) &&
+    (x.layout === undefined || ['timeline','mapping'].includes(x.layout)) &&
+    (x.summaryLabel === undefined || text(x.summaryLabel)) && (x.ratingLabel === undefined || text(x.ratingLabel));
+  const valid = !!data && data.version === 1 && text(data.title) && text(data.subtitle) &&
     list(data.pages, page) && data.pages.length > 0 && new Set(data.pages.map(x => x.id)).size === data.pages.length;
+  if (!valid) return false;
+  const items = data.pages.flatMap(p => p.sections.flatMap(s => s.items));
+  const ids = items.filter(i => i.id).map(i => i.id);
+  return new Set([...data.pages.map(p => p.id), ...ids]).size === data.pages.length + ids.length &&
+    items.every(i => !i.refs || i.refs.every(r => ids.includes(r.target)));
 }
 export function safeURL(value) {
   try { const u = new URL(value); return u.protocol === 'https:' && !u.username && !u.password ? u.href : null; } catch { return null; }

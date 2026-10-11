@@ -15,3 +15,8 @@ test('Schema validates text, unique opaque IDs and HTTPS links',()=>{
  for(const mutate of [d=>d.pages.push(d.pages[0]),d=>d.pages[0].id='title-in-url',d=>d.pages[0].sections[0].items[0].lines=[{}],d=>d.pages[0].sections[0].items[0].links[0].url='javascript:alert(1)']){const d=structuredClone(data);mutate(d);assert.equal(validPrivateData(d),false);}
 });
 test('Artifact audit detects secrets and forbidden source files without printing values',async()=>{const dir=await mkdtemp(path.join(tmpdir(),'private-audit-'));try{await writeFile(path.join(dir,'app.js'),'safe');assert.equal(await audit(dir,['secret-token']),1);await writeFile(path.join(dir,'app.js'),'secret-token');await assert.rejects(audit(dir,['secret-token']),/Private plaintext/);await writeFile(path.join(dir,'app.js'),'safe');await writeFile(path.join(dir,'source.xlsx'),'source');await assert.rejects(audit(dir),/Forbidden file/);}finally{await rm(dir,{recursive:true,force:true});}});
+test('Record metadata and references fail closed when malformed or unresolved',()=>{
+ const base=structuredClone(data);const item=base.pages[0].sections[0].items[0];item.id='b'.repeat(32);item.rating=3;item.refs=[{target:item.id,label:'Related record'}];base.pages[0].layout='timeline';
+ assert.ok(validPrivateData(base));
+ for(const mutate of [d=>d.pages[0].layout='unknown',d=>d.pages[0].sections[0].items[0].rating=4,d=>d.pages[0].sections[0].items[0].rating='3',d=>d.pages[0].sections[0].items[0].refs[0].target='c'.repeat(32),d=>d.pages[0].sections[0].items.push(d.pages[0].sections[0].items[0]),d=>d.pages[0].sections[0].items[0].id=d.pages[0].id,d=>d.pages[0].summaryLabel={}]){const value=structuredClone(base);mutate(value);assert.equal(validPrivateData(value),false);}
+});

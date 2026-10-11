@@ -58,5 +58,24 @@ test('mobile layout, keyboard dialog and opaque routes',async({page})=>{
 test('static subpath build, unlock and private-source exclusion',async({page})=>{
  const server=createServer(async(req,res)=>{try{const requested=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(!requested.startsWith('/for-fun/')){res.writeHead(404).end();return;}const file=path.resolve('dist',requested.slice('/for-fun/'.length)||'index.html');if(!file.startsWith(path.resolve('dist')+path.sep)){res.writeHead(403).end();return;}const body=await readFile(file);res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json'})[path.extname(file)]||'application/octet-stream');res.end(body);}catch{res.writeHead(404).end();}});
  await new Promise(resolve=>server.listen(4175,'127.0.0.1',resolve));
- try{await page.goto('http://127.0.0.1:4175/for-fun/');await locked(page);await open(page);await page.locator('#navigation a').nth(2).click();await expect(page.locator('.document')).toHaveCount(1);await page.reload();await locked(page);for(const p of ['.private/details.json','.private/password.txt','src/trip.json'])expect((await page.request.get('http://127.0.0.1:4175/for-fun/'+p)).status()).toBe(404);}finally{await new Promise(r=>server.close(r));}
+ try{await page.goto('http://127.0.0.1:4175/for-fun/');await locked(page);await open(page);await page.locator('#navigation a').nth(doc.pages.length-1).click();await expect(page.locator('.document')).toHaveCount(1);await page.reload();await locked(page);for(const p of ['.private/details.json','.private/password.txt','src/trip.json'])expect((await page.request.get('http://127.0.0.1:4175/for-fun/'+p)).status()).toBe(404);}finally{await new Promise(r=>server.close(r));}
+});
+
+test('complete grouped document and cross-page references',async({page})=>{
+ await page.goto('/');await open(page);
+ const first=doc.pages[0];
+ const records=first.sections.flatMap(s=>s.items).filter(i=>i.id);
+ expect(await page.locator('.card[id]').count()).toBe(records.length);
+ expect(records.every(i=>i.lines.length===3)).toBe(true);
+ const times=records.map(i=>i.time.slice(0,5));expect(times.every((t,i)=>!i||t>=times[i-1])).toBe(true);
+ expect(await page.locator('.rating').count()).toBe(records.filter(i=>i.rating>0).length);
+ await page.locator('#navigation a').nth(1).click();
+ const references=doc.pages[1].sections.flatMap(s=>s.items).flatMap(i=>i.refs||[]);
+ for(let i=0;i<references.length;i++){
+  await page.locator('.related-link').nth(i).click();
+  expect(await page.locator('.selected').getAttribute('id')===references[i].target).toBe(true);
+  expect(await page.locator('.selected').evaluate(el=>{const r=el.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;})).toBe(true);
+  await page.locator('#navigation a').nth(1).click();
+ }
+ await page.getByRole('switch').click();await locked(page);
 });
