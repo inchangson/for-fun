@@ -24,9 +24,14 @@ export async function decrypt(envelope, password) {
   return JSON.parse(new TextDecoder().decode(plain));
 }
 export function validPrivateData(data) {
-  return !!data && typeof data === 'object' && !Array.isArray(data) && Object.values(data).every(item =>
-    item && typeof item.title === 'string' && Array.isArray(item.lines) && item.lines.every(x=>typeof x==='string') &&
-    Array.isArray(item.links) && item.links.every(x=>typeof x.label==='string' && safeURL(x.url)));
+  const text = x => typeof x === 'string';
+  const list = (x, check) => Array.isArray(x) && x.every(check);
+  const link = x => x && text(x.label) && !!safeURL(x.url);
+  const item = x => x && text(x.eyebrow) && text(x.title) && list(x.lines, text) && list(x.links, link);
+  const section = x => x && text(x.title) && text(x.body) && list(x.items, item);
+  const page = x => x && /^[a-f0-9]{32}$/.test(x.id) && text(x.label) && text(x.kicker) && text(x.title) && text(x.intro) && list(x.sections, section);
+  return !!data && data.version === 1 && text(data.title) && text(data.subtitle) &&
+    list(data.pages, page) && data.pages.length > 0 && new Set(data.pages.map(x => x.id)).size === data.pages.length;
 }
 export function safeURL(value) {
   try { const u = new URL(value); return u.protocol === 'https:' && !u.username && !u.password ? u.href : null; } catch { return null; }

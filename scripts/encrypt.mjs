@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { randomBytes } from 'node:crypto';
 import { encrypt, validPrivateData } from '../site/src/crypto.js';
 const data = JSON.parse(await readFile('.private/details.json', 'utf8'));
-if (!validPrivateData(data)) throw new Error('Invalid private data. Text lines and HTTPS links required.');
+if (!validPrivateData(data)) throw new Error('Invalid private document. Text fields and HTTPS links required.');
 let password;
 await mkdir('.private', {recursive:true, mode:0o700});
 if (process.argv.includes('--prompt')) {
